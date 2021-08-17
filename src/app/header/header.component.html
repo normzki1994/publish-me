@@ -18,4 +18,18 @@
             <span class="social-media-icon"><fa-icon [icon]="faInstagram" class="icon"></fa-icon></span>
         </div>
     </div>
+    <nav class="main-nav">
+        <button type="button" class="nav-collapse-button" (click)="toggleNavCollapse()"><fa-icon [icon]="faBars" class="icon"></fa-icon> Menu</button>
+        <div class="nav-collapse" [ngClass]="{'show': showNav}">
+            <ul class="nav-links">
+                <li><a href="#" class="link">Home</a><hr></li>
+                <li><a href="#" class="link">About</a><hr></li>
+                <li><a href="#" class="link">Top Sellers</a><hr></li>
+                <li><a href="#" class="link">Books</a><hr></li>
+                <li><a href="#" class="link">Author</a><hr></li>
+                <li><a href="#" class="link">Blog</a><hr></li>
+                <li><a href="#" class="link">Contact</a><hr></li>
+            </ul>
+        </div>
+    </nav>
 </header>

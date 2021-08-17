@@ -13,10 +13,16 @@ export class HeaderComponent implements OnInit {
   faTwitter = faTwitter;
   faInstagram = faInstagram;
   faSearch = faSearch;
+  faBars = faBars;
+
+  showNav: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  toggleNavCollapse() {
+    this.showNav = !this.showNav;
+  }
 }

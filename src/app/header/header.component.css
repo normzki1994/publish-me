@@ -1,5 +1,5 @@
 .header {
-    max-width: 1300px;
+    max-width: 1400px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -81,6 +81,47 @@
     color: rgb(73, 73, 73);
 }
 
+.main-nav {
+    background-color: black;
+    padding: 0.5rem;
+}
+
+.nav-collapse {
+    height: 0;
+    overflow: hidden;
+    transition: all 1s;
+}
+
+.nav-collapse.show {
+    height: 220px;
+}
+
+.nav-collapse-button {
+    display: block;
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 0.25rem;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links hr {
+    height: 2px;
+    border-width: 0; 
+    color: gray;
+    background-color: gray;
+}
+
+.link {
+    display: block;
+    padding: 0.5rem 0;
+    text-decoration: none;
+    color: white;
+}
+
 @media(min-width: 768px) {
     .search-input {
         width: 24rem;
@@ -110,5 +151,48 @@
         grid-column-start: 1;
         grid-row-start: 1;
         justify-content: flex-start;
+    }
+
+    .nav-collapse,
+    .nav-collapse.show {
+        height: auto;
+        transition: none;
+    }
+
+    .nav-collapse-button { 
+        display: none;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-links hr {
+        width: 0;
+    }
+
+    @keyframes linkHover {
+        0% {
+            width: 0;
+        }
+
+        100% {
+            width: 100%;
+        }
+    }
+
+    .link:hover + hr {
+        animation-name: linkHover;
+        animation-duration: 1s;
+    }
+
+    .link {
+        padding: 0.5rem 1rem;
+    }
+
+    .link:hover {
+        color: gray;
     }
 }

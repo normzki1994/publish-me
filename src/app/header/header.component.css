@@ -2,6 +2,7 @@
     max-width: 1400px;
     margin-right: auto;
     margin-left: auto;
+    background-color: #D8DB72;
 }
 
 .header-content {
@@ -23,7 +24,7 @@
 }
 
 .description {
-    color: gray;
+    color: #35678F;
 }
 
 .search {
@@ -44,8 +45,9 @@
     padding: 0.5rem;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-    border: 1px solid gray;
     border-right: none;
+    font-size: 0.75rem;
+    height: 2.5rem;
 }
 
 .search-input:focus {
@@ -58,8 +60,9 @@
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     background-color: rgb(73, 73, 73);
-    border: 1px solid transparent;
+    border: none;
     color: white;
+    height: 2.5rem;
 }
 
 .social-media-icons {
@@ -77,8 +80,8 @@
     margin-left: 0.25rem;
     margin-right: 0.25rem;
     border-radius: 50%;
-    border: 1px solid gray;
-    color: rgb(73, 73, 73);
+    color: white;
+    background-color: black;
 }
 
 .main-nav {

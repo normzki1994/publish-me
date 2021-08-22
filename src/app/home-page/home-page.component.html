@@ -57,5 +57,38 @@
         </div>
     </section>
 
-    <section class="welcome"></section>
+    <section class="welcome">
+        <div class="welcome-image-container">
+            <img src="../../assets/images/welcome-image-2.jpg" alt="" class="welcome-image">
+        </div>
+        <div class="welcome-content">
+            <p class="welcome-intro">Welcome to Publish Me</p>
+            <h2 class="welcome-title">Publish Me by Authors</h2>
+            <p class="welcome-description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id reiciendis quod error sint delectus iure cum dolor natus, dolore dolorem quas non hic vitae odio iusto quidem provident cupiditate unde.</p>
+            <p class="welcome-description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id reiciendis quod error sint delectus iure cum dolor natus, dolore dolorem quas non hic vitae odio iusto quidem provident cupiditate unde. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id reiciendis quod error sint delectus iure cum dolor natus,</p>
+            <a href="#" class="view-authors-button">View Authors</a>
+        </div>
+    </section>
+
+    <section class="latest-release">
+        <h2 class="books-title" *ngIf="!latestBooks || latestBooks.length == 0">No books</h2>
+        <p class="latest-releases-intro">Books</p>
+        <h2 class="books-title" *ngIf="latestBooks && latestBooks.length > 0">Latest Releases</h2>
+        <div class="books" *ngIf="latestBooks && latestBooks.length > 0">
+            <div class="book" *ngFor="let book of latestBooks">
+                <div class="book-cover-container">
+                    <img src="{{'../../assets/images/' + book.bookCover}}" alt="" class="book-cover">
+                </div>
+                <div class="book-details">
+                    <p class="book-price">$ {{book.price}}</p>
+                    <h2 class="book-title">{{book.title}}</h2>
+                    <h3 class="book-author">By {{book.author}}</h3>
+                </div>
+                <div class="menu">
+                    <button class="menu-button"><fa-icon [icon]="faShoppingCart" class="icon"></fa-icon></button>
+                    <a href="" class="menu-button"><fa-icon [icon]="faSearch" class="icon"></fa-icon></a>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>

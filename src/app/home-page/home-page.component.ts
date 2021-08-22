@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Book } from '../books/book.model';
+
+import { faShoppingCart, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home-page',
@@ -6,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
+  faShoppingCart = faShoppingCart;
+  faSearch = faSearch;
+
   countInterval: any = null;
 
   bookSold: number = 1190;
@@ -17,6 +23,14 @@ export class HomePageComponent implements OnInit {
   bookPublishedCount: number = 0;
   totalPagesCount: number = 0;
   subscriberCount: number = 0;
+
+  latestBooks: Book[] = [
+    { title: "Cindrella", author: "Jenny", price: 20, genres: ["fairy tale", "children's story"], bookCover: "book-cover.jpg" },
+    { title: "Frozen", author: "Jenny", price: 20, genres: ["fairy tale", "children's story"], bookCover: "book-cover-2.jpg" },
+    { title: "Algebra", author: "John", price: 20, genres: ["education"], bookCover: "book-cover-3.jpg" },
+    { title: "Biology", author: "Mark", price: 20, genres: ["education"], bookCover: "book-cover-4.jpg" }
+  ];
+
   constructor() { }
 
   ngOnInit(): void {

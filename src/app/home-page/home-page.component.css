@@ -223,6 +223,183 @@
     cursor: pointer;
 }
 
+.testimonials {
+    background-image: linear-gradient(0deg, rgba(138, 138, 138, 0.5), rgba(138, 138, 138, 0.5)), url("../../assets/images/testimonials-background.jpg");
+    background-size: cover;
+    padding: 1rem;
+}
+
+.testimonials-intro {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.testimonials-title {
+    font-size: 1.5rem;
+    text-align: center;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.testimonial-list {
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.testimonial {
+    padding: 1rem;
+    background-color: white;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    transition: left 1s;
+    max-height: 250px;
+    width: 100%;
+}
+
+.testimonial-content {
+    margin-bottom: 1rem;
+    color: gray;
+    line-height: 1.5rem;
+}
+
+.customer {
+    display: flex;
+    align-items: flex-start;
+}
+
+.customer-avatar {
+    display: block;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.customer-name {
+    font-size: 1.25rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+}
+
+.list-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.indicator-button {
+    display: block;
+    height: 1rem;
+    width: 1rem;
+    background-color: white;
+    border: 3px solid gray;
+    border-radius: 50%;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+    cursor: pointer;
+}
+
+.indicator-button.selected {
+    background-color: #4699DB;
+    border: 3px solid #35678F;
+}
+
+.recent-blogs {
+    padding: 1rem;
+}
+
+.recent-blogs-intro {
+    color: #DB605C;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.recent-blogs-title {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.blog {
+    display: grid;
+    grid-template-rows: 55% 35%;
+    row-gap: 3rem;
+    position: relative;
+    height: 400px;
+    margin-bottom: 2rem;
+}
+
+.blog-date {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(214, 214, 214);
+    padding: 0.5rem;
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.blog:hover .blog-date {
+    background-color: rgb(102, 102, 102);
+    color: white;
+}
+
+.blog-day,
+.blog-month,
+.blog-year {
+    display: block;
+    text-align: center;
+}
+
+.blog-day {
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+
+.blog-year {
+    font-size: 0.75rem;
+}
+
+.blog-image {
+    width: 100%;
+    height: 100%;
+}
+
+.blog-details {
+    overflow: hidden;
+    text-align: center;
+}
+
+.blog-title {
+    text-align: center;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.blog-content {
+    line-height: 1.5rem;
+    color: gray;
+    max-height: 100px;
+    overflow: hidden;
+}
+
 @media(min-width: 768px) {
     .introduction-title {
         font-size: 2rem;
@@ -254,6 +431,13 @@
     }
 
     .books {
+        display: grid;
+        grid-template-columns: 45% 45%;
+        column-gap: 1rem;
+        justify-content: center;
+    }
+
+    .recent-blog-list {
         display: grid;
         grid-template-columns: 45% 45%;
         column-gap: 1rem;
@@ -315,5 +499,9 @@
 
     .book:hover .menu {
         display: block;
+    }
+
+    .recent-blog-list {
+        grid-template-columns: 30% 30% 30%;
     }
 }

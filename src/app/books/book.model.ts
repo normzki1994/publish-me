@@ -2,6 +2,6 @@ export interface Book {
     title: string; 
     author: string;
     price: number;
-    genres: string[];
+    genre: string;
     bookCover: string | File;
 }

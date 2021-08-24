@@ -57,19 +57,8 @@
         </div>
     </section>
 
-    <section class="welcome">
-        <div class="welcome-image-container">
-            <img src="../../assets/images/welcome-image-2.jpg" alt="" class="welcome-image">
-        </div>
-        <div class="welcome-content">
-            <p class="welcome-intro">Welcome to Publish Me</p>
-            <h2 class="welcome-title">Publish Me by Authors</h2>
-            <p class="welcome-description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id reiciendis quod error sint delectus iure cum dolor natus, dolore dolorem quas non hic vitae odio iusto quidem provident cupiditate unde.</p>
-            <p class="welcome-description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id reiciendis quod error sint delectus iure cum dolor natus, dolore dolorem quas non hic vitae odio iusto quidem provident cupiditate unde. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id reiciendis quod error sint delectus iure cum dolor natus,</p>
-            <a href="#" class="view-authors-button">View Authors</a>
-        </div>
-    </section>
-
+    <app-welcome-by-author></app-welcome-by-author>
+    
     <section class="latest-release">
         <h2 class="books-title" *ngIf="!latestBooks || latestBooks.length == 0">No books</h2>
         <p class="latest-releases-intro">Books</p>

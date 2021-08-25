@@ -1,0 +1,143 @@
+.books {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.genre {
+    padding: 3rem 1rem;
+}
+
+.genre-dropdown {
+    padding: 0.25rem;
+}
+
+.book-list {
+    padding: 1rem;
+}
+
+.book {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.book-cover-container {
+    min-height: 250px;
+    background-color: rgb(204, 204, 204);
+}
+
+.book-cover {
+    width: 100%;
+    height: 100%;
+}
+
+.book-details {
+    padding: 1rem;
+    background-color: rgb(204, 204, 204);
+}
+
+.book:hover .book-details {
+    background-color: #35678F;
+}
+
+.book-price {
+    color: #DB605C;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.book-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.book:hover .book-price,
+.book:hover .book-title,
+.book:hover .book-author {
+    color: white;
+}
+
+.book-author {
+    color: gray;
+}
+
+.menu {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 0.25rem;
+    border-radius: 50%;
+    color: gray;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+.indicator-button {
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: none;
+    margin-right: 0.25rem;
+    margin-left: 0.25rem;
+    cursor: pointer;
+}
+
+.indicator-button.active {
+    color: white;
+    background-color: #35678F;
+}
+
+@media(min-width:768px) {
+    .book-list {
+        display: grid;
+        grid-template-columns: 45% 45%;
+        column-gap: 1rem;
+        justify-content: center;
+    }
+}
+
+@media(min-width: 992px) {
+    .book-list {
+        grid-template-columns: 30% 30% 30%;
+    }
+
+    .book {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        justify-content: center;
+    }
+
+    .book:nth-child(odd) .book-cover-container {
+        grid-column-start: 1;
+    }
+
+    .book:nth-child(odd) .book-details {
+        grid-column-start: 2;
+    }
+
+    .book:nth-child(even) .book-cover-container {
+        grid-column-start: 2;
+    }
+
+    .book:nth-child(even) .book-details {
+        grid-column-start: 1;
+        grid-row-start: 1;
+    }
+}

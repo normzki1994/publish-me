@@ -38,24 +38,7 @@
         </div>
     </section>
 
-    <section class="stats">
-        <div class="stats-item">
-            <p class="stats-value">{{bookPublishedCount}}</p>
-            <h2 class="stats-title">Books Published</h2>
-        </div>
-        <div class="stats-item">
-            <p class="stats-value">{{bookSoldCount}}</p>
-            <h2 class="stats-title">Books Sold</h2>
-        </div>
-        <div class="stats-item">
-            <p class="stats-value">{{totalPagesCount}}</p>
-            <h2 class="stats-title">Total Pages</h2>
-        </div>
-        <div class="stats-item">
-            <p class="stats-value">{{subscriberCount}}</p>
-            <h2 class="stats-title">Total Subscriber</h2>
-        </div>
-    </section>
+    <app-stats></app-stats>
 
     <app-welcome-by-author></app-welcome-by-author>
     
@@ -81,66 +64,7 @@
         </div>
     </section>
 
-    <section class="testimonials">
-        <p class="testimonials-intro">Testimonial</p>
-        <h2 class="testimonials-title">Words from Our Readers</h2>
-        <div class="testimonial-list">
-            <div class="testimonial" style="left: 0%;">
-                <p class="testimonial-content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat quisquam repellat</p>
-                <div class="customer">
-                    <div class="customer-avatar-container">
-                        <img src="../../assets/images/reader-avatar.jpg" alt="" class="customer-avatar">
-                    </div>
-                    <div class="customer-details">
-                        <h3 class="customer-name">Daniel Maxy</h3>
-                        <p class="customer-job">Photographer</p>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial" style="left: 100%;">
-                <p class="testimonial-content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat quisquam repellat</p>
-                <div class="customer">
-                    <div class="customer-avatar-container">
-                        <img src="../../assets/images/reader-avatar-2.jpg" alt="" class="customer-avatar">
-                    </div>
-                    <div class="customer-details">
-                        <h3 class="customer-name">Daniel Maxy</h3>
-                        <p class="customer-job">Photographer</p>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial" style="left: 200%;">
-                <p class="testimonial-content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat quisquam repellat</p>
-                <div class="customer">
-                    <div class="customer-avatar-container">
-                        <img src="../../assets/images/reader-avatar-3.jpg" alt="" class="customer-avatar">
-                    </div>
-                    <div class="customer-details">
-                        <h3 class="customer-name">Daniel Maxy</h3>
-                        <p class="customer-job">Photographer</p>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial" style="left: 300%;">
-                <p class="testimonial-content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat quisquam repellat</p>
-                <div class="customer">
-                    <div class="customer-avatar-container">
-                        <img src="../../assets/images/reader-avatar-4.jpg" alt="" class="customer-avatar">
-                    </div>
-                    <div class="customer-details">
-                        <h3 class="customer-name">Daniel Maxy</h3>
-                        <p class="customer-job">Photographer</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="list-indicator">
-            <button type="button" class="indicator-button" (click)="moveIndex(0)" [ngClass]="testimonialIndex == 0 ? 'selected' : ''"></button>
-            <button type="button" class="indicator-button" (click)="moveIndex(1)" [ngClass]="testimonialIndex == 1 ? 'selected' : ''"></button>
-            <button type="button" class="indicator-button" (click)="moveIndex(2)" [ngClass]="testimonialIndex == 2 ? 'selected' : ''"></button>
-            <button type="button" class="indicator-button" (click)="moveIndex(3)" [ngClass]="testimonialIndex == 3 ? 'selected' : ''"></button>
-        </div>
-    </section>
+    <app-testimonials></app-testimonials>
 
     <section class="recent-blogs">
         <p class="recent-blogs-intro">Blog</p>

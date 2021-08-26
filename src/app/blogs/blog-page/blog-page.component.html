@@ -1,0 +1,26 @@
+<div class="blogs">
+    <app-introduction-header title="Blogs"></app-introduction-header>
+
+    <section class="blog-list">
+        <div class="blog" *ngFor="let blog of blogs">
+            <div class="image-container">
+                <img src="{{'../../assets/images/' + blog.image}}" alt="" class="blog-image">
+            </div>
+            <div class="blog-date">
+                <span class="blog-day">{{blog.date.getDate()}}</span>
+                <span class="blog-month">{{blog.date.toLocaleString('default', { month: 'long' })}}</span>
+                <span class="blog-year">{{blog.date.getFullYear()}}</span>
+            </div>
+            <div class="blog-details">
+                <h2 class="blog-title">{{blog.title}}</h2>
+                <p class="blog-content">{{blog.content}}</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="indicator">
+        <button type="button" class="indicator-button active">1</button>
+        <button type="button" class="indicator-button">2</button>
+        <button type="button" class="indicator-button">3</button>
+    </div>
+</div>

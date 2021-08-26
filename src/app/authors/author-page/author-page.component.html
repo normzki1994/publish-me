@@ -1,0 +1,23 @@
+<div class="authors">
+    <app-introduction-header title="Authors"></app-introduction-header>
+
+    <h2 class="author-title" *ngIf="!authors || authors.length == 0">No Author</h2>
+    <div class="author-list" *ngIf="authors && authors.length > 0">
+        <div class="author" *ngFor="let author of authors">
+            <div class="image-container">
+                <img src="{{'../../assets/images/' + author.image}}" alt="" class="author-image">
+                <div class="social-media-icons">
+                    <span class="social-media-icon"><fa-icon [icon]="faFacebook" class="icon"></fa-icon></span>
+                    <span class="social-media-icon"><fa-icon [icon]="faInstagram" class="icon"></fa-icon></span>
+                    <span class="social-media-icon"><fa-icon [icon]="faTwitter" class="icon"></fa-icon></span>
+                    <span class="social-media-icon"><fa-icon [icon]="faGoogle" class="icon"></fa-icon></span>
+                </div>
+            </div>
+            <div class="author-details">
+                <h3 class="author-name">{{author.name}}</h3>
+                <p class="author-description">{{author.description}}</p>
+                <a href="#" class="view-books-button">View Books</a>
+            </div>
+        </div>
+    </div>
+</div>

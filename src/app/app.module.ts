@@ -14,6 +14,7 @@ import { TestimonialsComponent } from './testimonials/testimonials.component';
 import { StatsComponent } from './stats/stats.component';
 import { BooksPageComponent } from './books/books-page/books-page.component';
 import { IntroductionHeaderComponent } from './introduction-header/introduction-header.component';
+import { AuthorPageComponent } from './authors/author-page/author-page.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { IntroductionHeaderComponent } from './introduction-header/introduction-
     TestimonialsComponent,
     StatsComponent,
     BooksPageComponent,
-    IntroductionHeaderComponent
+    IntroductionHeaderComponent,
+    AuthorPageComponent
   ],
   imports: [
     BrowserModule,

@@ -16,6 +16,7 @@ import { BooksPageComponent } from './books/books-page/books-page.component';
 import { IntroductionHeaderComponent } from './introduction-header/introduction-header.component';
 import { AuthorPageComponent } from './authors/author-page/author-page.component';
 import { BlogPageComponent } from './blogs/blog-page/blog-page.component';
+import { ContactUsPageComponent } from './contact-us-page/contact-us-page.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { BlogPageComponent } from './blogs/blog-page/blog-page.component';
     BooksPageComponent,
     IntroductionHeaderComponent,
     AuthorPageComponent,
-    BlogPageComponent
+    BlogPageComponent,
+    ContactUsPageComponent
   ],
   imports: [
     BrowserModule,

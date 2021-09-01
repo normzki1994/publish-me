@@ -96,7 +96,9 @@
 }
 
 .nav-collapse.show {
-    height: 220px;
+    height: 250px;
+    animation-name: navCollapse;
+    animation-duration: 0.5s;
 }
 
 .nav-collapse-button {

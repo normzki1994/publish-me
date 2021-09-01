@@ -17,7 +17,7 @@ import { IntroductionHeaderComponent } from './introduction-header/introduction-
 import { AuthorPageComponent } from './authors/author-page/author-page.component';
 import { BlogPageComponent } from './blogs/blog-page/blog-page.component';
 import { ContactUsPageComponent } from './contact-us-page/contact-us-page.component';
-
+import { AdminPortalLoginPageComponent } from './auth/admin-portal-login-page/admin-portal-login-page.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,8 @@ import { ContactUsPageComponent } from './contact-us-page/contact-us-page.compon
     IntroductionHeaderComponent,
     AuthorPageComponent,
     BlogPageComponent,
-    ContactUsPageComponent
+    ContactUsPageComponent,
+    AdminPortalLoginPageComponent
   ],
   imports: [
     BrowserModule,

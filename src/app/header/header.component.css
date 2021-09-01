@@ -96,9 +96,7 @@
 }
 
 .nav-collapse.show {
-    height: 250px;
-    animation-name: navCollapse;
-    animation-duration: 0.5s;
+    height: 270px;
 }
 
 .nav-collapse-button {
@@ -191,6 +189,7 @@
     .link:hover + hr {
         animation-name: linkHover;
         animation-duration: 1s;
+        animation-fill-mode: forwards;
     }
 
     .link {

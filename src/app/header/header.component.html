@@ -23,12 +23,12 @@
         <div class="nav-collapse" [ngClass]="{'show': showNav}">
             <ul class="nav-links">
                 <li><a routerLink="/" class="link">Home</a><hr></li>
-                <li><a routerLink="/about" class="link">About</a><hr></li>
-                <li><a routerLink="/books" class="link">Books</a><hr></li>
-                <li><a routerLink="/authors" class="link">Author</a><hr></li>
-                <li><a routerLink="/blogs" class="link">Blog</a><hr></li>
-                <li><a routerLink="/contact-us" class="link">Contact</a><hr></li>
-                <li><a routerLink="/auth" class="link">Admin Portal</a><hr></li>
+                <li><a routerLink="/about" class="link" (click)="toggleNavCollapse()">About</a><hr></li>
+                <li><a routerLink="/books" class="link" (click)="toggleNavCollapse()">Books</a><hr></li>
+                <li><a routerLink="/authors" class="link" (click)="toggleNavCollapse()">Author</a><hr></li>
+                <li><a routerLink="/blogs" class="link" (click)="toggleNavCollapse()">Blog</a><hr></li>
+                <li><a routerLink="/contact-us" class="link" (click)="toggleNavCollapse()">Contact</a><hr></li>
+                <li><a routerLink="/signup" class="link" (click)="toggleNavCollapse()">Sign Up</a><hr></li>
             </ul>
         </div>
     </nav>

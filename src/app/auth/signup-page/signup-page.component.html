@@ -1,0 +1,43 @@
+<div class="signup">
+    <app-loading-spinner [isLoading]="isLoading"></app-loading-spinner>
+
+    <section class="signup-section">
+        <app-modal *ngIf="modalType && modalMessage && !isLoading" [modalType]="modalType" [message]="modalMessage"></app-modal>
+        
+        <h1 class="signup-title">Sign Up</h1>
+
+        <form action="" class="signup-form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+            <div class="form-control-group">
+                <label for="name" class="form-label">Name</label>
+                <input class="form-control" type="text" name="name" id="name" placeholder="Name" formControlName="name"
+                [ngClass]="name?.invalid && (name?.dirty || name?.touched) ? 'error' : ''">
+                <div class="error-list" *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+                    <span class="error-message" *ngIf="name?.errors?.required">Name is required</span>
+                    <span class="error-message" *ngIf="name?.errors?.maxlength">Name max length is 150</span>
+                    <span class="error-message" *ngIf="name?.errors?.minlength">Name min length is 2</span>
+                </div>
+            </div>
+            <div class="form-control-group">
+                <label for="email" class="form-label">Email</label>
+                <input class="form-control" type="email" name="email" id="email" placeholder="Email" formControlName="email">
+                <div class="error-list" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+                    <span class="error-message" *ngIf="email?.errors?.required">Email is required</span>
+                    <span class="error-message" *ngIf="email?.errors?.email">Email is not valid</span>
+                </div>
+            </div>
+            <div class="form-control-group">
+                <label for="password" class="form-label">Password</label>
+                <input class="form-control" type="password" name="password" id="password" placeholder="Password" 
+                formControlName="password">
+                <div class="error-list" *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+                    <span class="error-message" *ngIf="password?.errors?.required">Password is required</span>
+                    <span class="error-message" *ngIf="password?.errors?.maxlength">Password max length is 150</span>
+                    <span class="error-message" *ngIf="password?.errors?.minlength">Password min length is 2</span>
+                </div>
+            </div>
+
+            <input type="submit" value="Sign Up" class="submit-button" [disabled]="!signupForm.valid" 
+            [ngStyle]="!signupForm.valid ? {'backgroundColor': 'gray'} : {}">
+        </form>
+    </section>
+</div>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -17,7 +18,10 @@ import { IntroductionHeaderComponent } from './introduction-header/introduction-
 import { AuthorPageComponent } from './authors/author-page/author-page.component';
 import { BlogPageComponent } from './blogs/blog-page/blog-page.component';
 import { ContactUsPageComponent } from './contact-us-page/contact-us-page.component';
-import { AdminPortalLoginPageComponent } from './auth/admin-portal-login-page/admin-portal-login-page.component';
+import { SignupPageComponent } from './auth/signup-page/signup-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { ModalComponent } from './shared/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -34,12 +38,17 @@ import { AdminPortalLoginPageComponent } from './auth/admin-portal-login-page/ad
     AuthorPageComponent,
     BlogPageComponent,
     ContactUsPageComponent,
-    AdminPortalLoginPageComponent
+    SignupPageComponent,
+    LoadingSpinnerComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     FontAwesomeModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

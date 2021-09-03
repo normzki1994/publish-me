@@ -96,7 +96,7 @@
 }
 
 .nav-collapse.show {
-    height: 270px;
+    height: 100vh;
 }
 
 .nav-collapse-button {

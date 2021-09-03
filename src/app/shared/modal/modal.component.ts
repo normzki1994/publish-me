@@ -17,9 +17,9 @@ export class ModalComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    // setTimeout(() => {
-    //   this.isDestroy = true;
-    // }, 10000);
+    setTimeout(() => {
+      this.isDestroy = true;
+    }, 10000);
   }
 
   onModalClose() {

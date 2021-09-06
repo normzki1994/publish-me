@@ -125,6 +125,28 @@
     color: white;
 }
 
+.user-details {
+    display: flex;
+    align-items: center;
+}
+
+.login-user-name {
+    color: #4699DB;
+    display: block;
+    margin-right: 0.25rem;
+}
+
+.logout-button {
+    display: block;
+    padding: 0.25rem;
+    text-align: center;
+    background-color: #DB605C;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
 @media(min-width: 768px) {
     .search-input {
         width: 24rem;

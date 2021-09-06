@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -20,7 +21,7 @@ export class LoginPageComponent implements OnInit {
   modalType: string | null = null;
   modalMessage: string | null = null;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -35,16 +36,21 @@ export class LoginPageComponent implements OnInit {
 
     this.isLoading = true;
     this.authService.login(email, password).subscribe(responseData => {
-      console.log(responseData);
       this.isLoading = false;
-      this.modalType = "Info";
-      this.modalMessage = "You successfully sign up";
-    }, error => {
-      console.log(error);
+      this.authService.token = responseData.token;
+      const fetchedUser: any = {
+        email: responseData.email,
+        name: responseData.name,
+        userId: responseData.userId
+      }
+      this.authService.authStatusListener.next(fetchedUser);
+      localStorage.setItem("userData", JSON.stringify(responseData));
+      this.authService.autoLogout(responseData.expiresIn * 1000);
+      this.router.navigate(["/"]);
+    }, errorMessage => {
       this.isLoading = false;
       this.modalType = "Error";
-      this.modalMessage = error.statusText;
-      window.scroll(0,0,);
-    })
+      this.modalMessage = errorMessage.statusText;
+    });
   }
 }

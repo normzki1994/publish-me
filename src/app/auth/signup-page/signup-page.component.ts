@@ -44,6 +44,7 @@ export class SignupPageComponent implements OnInit {
       // this.router.navigate(["/admin"]);
       this.modalType = "Info";
       this.modalMessage = "You successfully sign up";
+      this.signupForm.reset();
     }, error => {
       console.log(error);
       this.isLoading = false;

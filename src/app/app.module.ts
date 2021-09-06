@@ -23,6 +23,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { ModalComponent } from './shared/modal/modal.component';
 import { LoginPageComponent } from './auth/login-page/login-page.component';
+import { AdminPortalComponent } from './admin/admin-portal/admin-portal.component';
+import { AdminPageComponent } from './admin/admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { LoginPageComponent } from './auth/login-page/login-page.component';
     SignupPageComponent,
     LoadingSpinnerComponent,
     ModalComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    AdminPortalComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,

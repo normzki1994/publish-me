@@ -1,0 +1,26 @@
+<header class="admin-header">
+    <nav class="main-nav">
+        <button type="button" class="nav-collapse-button" (click)="toggleNavCollapse()"><fa-icon [icon]="faBars" class="icon"></fa-icon></button>
+        <div class="nav-collapse">
+            <ul class="link-list" [ngClass]="showNav ? 'show' : ''">
+                <li><a href="#" class="link">Dashboard</a></li>
+                <li><a href="#" class="link">Authors</a></li>
+                <li><a href="#" class="link">Books</a></li>
+                <li><a href="#" class="link">Books for Sale</a></li>
+                <li><a href="#" class="link">Messages</a></li>
+                <li><a href="#" class="link">Sales</a></li>
+            </ul>
+        </div>
+    </nav>
+    <h1 class="title">Publish Me</h1>
+    <div class="user-details">
+        <button type="button" class="user-details-collapse-button" (click)="toggleUserDetails()">
+            <fa-icon [icon]="faEllipsisV" class="icon"></fa-icon>
+        </button>
+        <div class="user-details-collapse" [ngClass]="showUserDetails ? 'show' : ''">
+            <img src="../../../assets/images/author-2.jpg" alt="" class="user-avatar">
+            <h2 class="user-name">{{user.name}}</h2>
+            <button type="button" class="logout-button">Logout</button>
+        </div>
+    </div>
+</header>

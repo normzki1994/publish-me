@@ -13,17 +13,24 @@ import { AuthorPageComponent } from "./authors/author-page/author-page.component
 import { BlogPageComponent } from "./blogs/blog-page/blog-page.component";
 import { BooksPageComponent } from "./books/books-page/books-page.component";
 import { ContactUsPageComponent } from "./contact-us-page/contact-us-page.component";
+import { AdminPageComponent } from "./admin/admin-page/admin-page.component";
+import { MainPageComponent } from "./main-page/main-page.component";
 
 const routes: Routes = [
-    { path: "", component: HomePageComponent },
-    { path: "about", component: AboutPageComponent },
-    { path: "books", component: BooksPageComponent },
-    { path: "authors", component: AuthorPageComponent },
-    { path: "blogs", component: BlogPageComponent },
-    { path: "contact-us", component: ContactUsPageComponent },
-    { path: "signup", component: SignupPageComponent },
-    { path: "login", component: LoginPageComponent },
-    { path: "admin", component: AdminPortalComponent, canActivate: [AuthGuard, AuthAdminGuard] }
+    { path: "", component: MainPageComponent , children: [
+        { path: "", component: HomePageComponent },
+        { path: "about", component: AboutPageComponent },
+        { path: "books", component: BooksPageComponent },
+        { path: "authors", component: AuthorPageComponent },
+        { path: "blogs", component: BlogPageComponent },
+        { path: "contact-us", component: ContactUsPageComponent },
+        { path: "signup", component: SignupPageComponent },
+        { path: "login", component: LoginPageComponent }
+    ]},
+    
+    { path: "admin", component: AdminPortalComponent, canActivate: [AuthGuard, AuthAdminGuard], children: [
+        { path: "", component: AdminPageComponent }
+    ] }
 ];
 
 @NgModule({

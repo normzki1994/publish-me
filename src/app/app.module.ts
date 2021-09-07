@@ -25,6 +25,8 @@ import { ModalComponent } from './shared/modal/modal.component';
 import { LoginPageComponent } from './auth/login-page/login-page.component';
 import { AdminPortalComponent } from './admin/admin-portal/admin-portal.component';
 import { AdminPageComponent } from './admin/admin-page/admin-page.component';
+import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
+import { MainPageComponent } from './main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { AdminPageComponent } from './admin/admin-page/admin-page.component';
     ModalComponent,
     LoginPageComponent,
     AdminPortalComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    AdminHeaderComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,

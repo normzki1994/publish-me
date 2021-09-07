@@ -1,0 +1,142 @@
+.admin-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.25rem;
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    background-color: #4699DB;
+}
+
+.main-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+.nav-collapse-button {
+    display: block;
+    color: #35678F;
+    padding: 0.25rem;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.nav-collapse-button .icon {
+    font-size: 1.25rem;
+}
+
+.nav-collapse {
+    position: relative;
+    width: 160px;
+}
+
+.link-list {
+    position: absolute;
+    top: 0;
+    left: -100vh;
+    transition: all 0.5s;
+    padding: 0 1rem;
+    list-style: none;
+    background-color: #4699DB;
+    height: 100vh;
+    padding-top: 0.5rem;
+}
+
+.link-list.show {
+    left: 0;
+}
+
+.link {
+    display: block;
+    padding: 0.25rem 0;
+    text-decoration: none;
+    color: black;
+}
+
+.title {
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+.user-details {
+    position: relative;
+    margin-right: 0.5rem;
+}
+
+.user-details-collapse-button {
+    display: block;
+    margin-left: auto;
+    margin-right: 0.5rem;
+    background-color: #35678F;
+    padding: 0.25rem;
+    border: none;
+    color: white;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.user-details-collapse-button .icon {
+    font-size: 1.25rem;
+}
+
+.user-details-collapse {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -10rem;
+    right: 1rem;
+    transition: all 0.5s;
+    background-color: white;
+    border-radius: 10px;
+    width: auto;
+    background-color: #35678F;
+    padding: 0.5rem;
+}
+
+.user-details-collapse.show {
+    top: 3.5rem;
+}
+
+.user-avatar {
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.user-name {
+    color: white;
+    margin-right: 0.5rem;
+}
+
+.logout-button {
+    display: block;
+    padding: 0.25rem;
+    color: white;
+    background-color: #DB605C;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media(min-width: 992px) {
+    .user-details-collapse-button {
+        display: none;
+    }
+
+    .user-details-collapse,
+    .user-details-collapse.show {
+        display: flex;
+        align-items: center;
+        position: static;
+        background-color: transparent;
+        width: auto;
+        padding: 0;
+    }
+}

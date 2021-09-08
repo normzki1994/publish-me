@@ -52,18 +52,4 @@ router.post("/login", (req, res, next) => {
     });
 });
 
-router.get("/get-user-by-token", async (req, res, next) => {
-    const token = req.query.token;
-    const decodedToken = jwt.verify(token, config.get("jwtPrivateKey"));
-    userId = decodedToken.userId ;
-
-    const user = await User.findById(userId, "name email").exec();
-
-    if(!user) {
-        return res.status(401).json({ message: "Authentication failed" });
-    }
-
-    return res.status(200).json({ user: user })
-})
-
 module.exports = router;

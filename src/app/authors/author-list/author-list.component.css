@@ -1,0 +1,25 @@
+.authors {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.menu-title {
+    display: flex;
+    align-items: center;
+}
+
+.authors-title {
+    display: inline-block;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.add-author-button {
+    background-color: #DB605C;
+    color: white;
+    display: block;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+}

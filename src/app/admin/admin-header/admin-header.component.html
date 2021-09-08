@@ -3,12 +3,36 @@
         <button type="button" class="nav-collapse-button" (click)="toggleNavCollapse()"><fa-icon [icon]="faBars" class="icon"></fa-icon></button>
         <div class="nav-collapse">
             <ul class="link-list" [ngClass]="showNav ? 'show' : ''">
-                <li><a href="#" class="link">Dashboard</a></li>
-                <li><a href="#" class="link">Authors</a></li>
-                <li><a href="#" class="link">Books</a></li>
-                <li><a href="#" class="link">Books for Sale</a></li>
-                <li><a href="#" class="link">Messages</a></li>
-                <li><a href="#" class="link">Sales</a></li>
+                <li>
+                    <a href="#" class="link">
+                        <span class="link-icon"><fa-icon [icon]="faRocket"></fa-icon></span> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="link">
+                        <span class="link-icon"><fa-icon [icon]="faUserEdit"></fa-icon></span> Authors
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="link">
+                        <span class="link-icon"><fa-icon [icon]="faUserEdit"></fa-icon></span> Books
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="link">
+                        <span class="link-icon"><fa-icon [icon]="faBookOpen"></fa-icon></span> Books for Sale
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="link">
+                        <span class="link-icon"><fa-icon [icon]="faEnvelope"></fa-icon></span> Messages
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="link">
+                        <span class="link-icon"><fa-icon [icon]="faMoneyCheck"></fa-icon></span> Sales
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>

@@ -27,6 +27,8 @@ import { AdminPortalComponent } from './admin/admin-portal/admin-portal.componen
 import { AdminPageComponent } from './admin/admin-page/admin-page.component';
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { AddAuthorComponent } from './authors/add-author/add-author.component';
+import { AuthorListComponent } from './authors/author-list/author-list.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { MainPageComponent } from './main-page/main-page.component';
     AdminPortalComponent,
     AdminPageComponent,
     AdminHeaderComponent,
-    MainPageComponent
+    MainPageComponent,
+    AddAuthorComponent,
+    AuthorListComponent
   ],
   imports: [
     BrowserModule,

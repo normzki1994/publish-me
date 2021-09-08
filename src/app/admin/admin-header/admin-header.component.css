@@ -1,7 +1,6 @@
 .admin-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
     padding-top: 0.25rem;
     background-color: white;
     position: fixed;
@@ -52,9 +51,17 @@
 
 .link {
     display: block;
-    padding: 0.25rem 0;
+    padding: 0.5rem 0;
     text-decoration: none;
     color: black;
+}
+
+.link:hover {
+    color: white;
+}
+
+.link-icon {
+    color: white;
 }
 
 .title {

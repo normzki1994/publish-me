@@ -26,4 +26,14 @@ export class AuthorService {
             }
         });
     }
+
+    getAuthors(pageSize: any, currentPage: any, searchText: string) {
+        return this.http.get<{authors: any, lastPage: number}>("http://localhost:3000/api/authors/", {
+            params: {
+                pageSize: pageSize,
+                currentPage: currentPage,
+                searchText: searchText
+            }
+        })
+    }
 }

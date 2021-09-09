@@ -16,7 +16,7 @@ import { ContactUsPageComponent } from "./contact-us-page/contact-us-page.compon
 import { AdminPageComponent } from "./admin/admin-page/admin-page.component";
 import { MainPageComponent } from "./main-page/main-page.component";
 import { AddAuthorComponent } from "./authors/add-author/add-author.component";
-import { AuthorListComponent } from "./authors/author-list/author-list.component";
+import { AdminAuthorPageComponent } from "./authors/admin-author-page/admin-author-page.component";
 
 const routes: Routes = [
     { path: "", component: MainPageComponent , children: [
@@ -32,7 +32,7 @@ const routes: Routes = [
     
     { path: "admin", component: AdminPortalComponent, canActivate: [AuthGuard, AuthAdminGuard], children: [
         { path: "", component: AdminPageComponent },
-        { path: "authors", component: AuthorListComponent },
+        { path: "authors", component: AdminAuthorPageComponent },
         { path: "add-author", component: AddAuthorComponent }
     ] }
 ];

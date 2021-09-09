@@ -1,0 +1,49 @@
+<div class="admin-author">
+    <app-loading-spinner [isLoading]="isLoading"></app-loading-spinner>
+
+    <section class="admin-author-section">
+        <app-modal *ngIf="modalType && modalMessage && !isLoading" [modalType]="modalType" [message]="modalMessage"></app-modal>
+        
+        <div class="title-menu">
+            <h1 class="title">Author List</h1>
+            <button type="button" class="add-author-button">Add Author</button>
+        </div>
+        
+        <div class="search-menu">
+            <label for="searchText" class="search-label">Search</label>
+            <input type="text" class="search-text" id="searchText" name="searchText" placeholder="Search" #searchText>
+            <button type="button" class="search-button" (click)="onSearch(searchText.value)">
+                <fa-icon [icon]="faSearch" class="icon"></fa-icon>
+            </button>
+        </div>
+
+        <h2 class="no-author-title" *ngIf="!authors || authors?.length == 0">No Author found</h2>
+
+        <div class="author-list" *ngIf="authors || authors?.length > 0">
+            <div class="author" *ngFor="let author of authors">
+                <div class="author-image-container">
+                    <img [src]="author.imagePath" alt="" class="author-image">
+                </div>
+                <div class="author-details">
+                    <h3 class="author-name">{{author.name}}</h3>
+                    <p class="author-description">{{author.description}}</p>
+                </div>
+                <div class="menu">
+                    <a href="#" class="view-button">View</a>
+                    <a href="#" class="edit-button">Edit</a>
+                    <button type="button" class="delete-button">Delete</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="indicators">
+            <button type="button" class="previous-button" [disabled]="currentPage == 1"
+            [ngStyle]="currentPage == 1 ? {'background-color': 'gray'} : {}"
+            (click)="onPrevious(searchText.value)">Prev</button>
+
+            <button type="button" class="next-button" [disabled]="currentPage >= lastPage"
+            [ngStyle]="currentPage >= lastPage ? {'background-color': 'gray'} : {}"
+            (click)="onNext(searchText.value)">Next</button>
+        </div>
+    </section>
+</div>

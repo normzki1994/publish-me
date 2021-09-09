@@ -33,7 +33,7 @@ router.post("", checkAuth, multer({ storage: storage }).single("image"), (req, r
     const url = req.protocol + "://" + req.get("host");
     const author = new Author({
         name: req.body.name,
-        imagePath: url + "/images/author/" + req.file.filename,
+        imagePath: url + "/images/authors/" + req.file.filename,
         description: req.body.description
     });
 
@@ -45,6 +45,31 @@ router.post("", checkAuth, multer({ storage: storage }).single("image"), (req, r
     }).catch(error => {
         return res.status(500).json({ message: "Something went wrong", error: error });
     });
+});
+
+router.get("/", async (req, res, next) => {
+    let pageSize = req.query.pageSize ? +req.query.pageSize : 1;
+    let currentPage = req.query.currentPage ? +req.query.currentPage : 1;
+    let searchText = req.query.searchText;
+    let searchParam = { name: { $regex: searchText, $options: "i" } };
+    let lastPage = 1;
+
+    var authorsCount = await Author.find(searchParam).count().exec();
+    lastPage = Math.ceil(authorsCount / pageSize)
+
+    await Author.find(searchParam)
+        .skip(pageSize * (currentPage - 1))
+        .limit(pageSize)
+        .sort({ name: 1 })
+        .then(authors => {
+            authors = authors;
+            return res.status(200).send({ authors: authors, lastPage: lastPage });
+        }).catch(error => {
+            return res.status(500).json({
+                message: "Something went wrong",
+                error: error
+            });
+        });
 });
 
 module.exports = router;

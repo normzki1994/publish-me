@@ -17,6 +17,7 @@ import { AdminPageComponent } from "./admin/admin-page/admin-page.component";
 import { MainPageComponent } from "./main-page/main-page.component";
 import { AddAuthorComponent } from "./authors/add-author/add-author.component";
 import { AdminAuthorPageComponent } from "./authors/admin-author-page/admin-author-page.component";
+import { EditAuthorComponent } from "./authors/edit-author/edit-author.component";
 
 const routes: Routes = [
     { path: "", component: MainPageComponent , children: [
@@ -33,7 +34,8 @@ const routes: Routes = [
     { path: "admin", component: AdminPortalComponent, canActivate: [AuthGuard, AuthAdminGuard], children: [
         { path: "", component: AdminPageComponent },
         { path: "authors", component: AdminAuthorPageComponent },
-        { path: "add-author", component: AddAuthorComponent }
+        { path: "add-author", component: AddAuthorComponent },
+        { path: "edit-author/:id", component: EditAuthorComponent }
     ] }
 ];
 

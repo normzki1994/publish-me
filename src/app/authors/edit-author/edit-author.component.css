@@ -1,0 +1,84 @@
+.edit-author {
+    padding: 4rem 1rem;
+}
+
+.title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.author-form {
+    padding: 2rem;
+    max-width: 500px;
+    margin: 0 auto;
+    border: 1px solid gray;
+}
+
+.image-preview {
+    width: 10rem;
+}
+
+.form-control-group {
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    display: block;
+    color: gray;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.25rem;
+    padding-bottom: 0.75rem;
+    border: none;
+    border-bottom: 1px solid gray;
+    font-size: 0.9rem;
+}
+
+.form-control:focus {
+    outline: none;
+    border-bottom: 1px solid #35678F;
+}
+
+.form-control.error {
+    border-bottom: 1px solid #8F312E;
+}
+
+textarea.form-control {
+    height: 4rem;
+}
+
+.error-message {
+    color: #DB605C;
+}
+
+.submit-button {
+    display: block;
+    text-decoration: none;
+    padding: 0.75rem;
+    background-color: #DB605C;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+@media(min-width: 768px) {
+    .image {
+        display: flex;
+        align-items: center;
+    }
+
+    .image .form-control-group {
+        order: 1;
+    }
+
+    .image .image-preview-container {
+        order: 2;
+    }
+}

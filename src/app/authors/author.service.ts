@@ -36,4 +36,30 @@ export class AuthorService {
             }
         })
     }
+
+    getAuthor(authorId: any) {
+        return this.http.get<any>("http://localhost:3000/api/authors/" + authorId);
+    }
+
+    updateAuthor(authorId: any, name: string, image: File, description: string) {
+        let token;
+        const userData = localStorage.getItem("userData");
+        if(userData) {
+            token = JSON.parse(userData)?.token;
+        }
+
+        const authorData = new FormData();
+        authorData.append("name", name);
+        authorData.append("description", description);
+
+        if(image) {
+            authorData.append("image", image);
+        }
+
+        return this.http.put("http://localhost:3000/api/authors/" + authorId, authorData, {
+            params: {
+                token: token
+            }
+        })
+    }
 }

@@ -15,7 +15,7 @@ const MIME_TYPE = {
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
-        callback(null, "images/authors/")
+        callback(null, "images/authors/");
     },
     filename: (req, file, callback) => {
         const ext = MIME_TYPE[file.mimetype];
@@ -70,6 +70,39 @@ router.get("/", async (req, res, next) => {
                 error: error
             });
         });
+});
+
+router.get("/:id", (req, res, next) => {
+    const authorId = req.params.id;
+
+    Author.findById(authorId).then(author => {
+        return res.status(200).send(author);
+    }, error => {
+        return res.status(500).json({
+            message: "Something went wrong",
+            error: error
+        });
+    });
+});
+
+router.put("/:id", checkAuth, multer({ storage: storage }).single("image"), (req, res, next) => {
+    const authorId = req.params.id;
+    if(!req.userData.isAdmin) {
+        return res.status(401).json({ message: "Not admin. User not authorized" });
+    }
+
+    const author = { name: req.body.name, description: req.body.description };
+    const url = req.protocol + "://" + req.get("host");
+    if(req.file) {
+        author.imagePath = url + "/images/authors/" + req.file.filename
+    }
+
+    Author.findByIdAndUpdate(authorId, { $set: author }, { upsert: true, new: true }, function(error, docs) {
+        if(error) {
+            return res.status(500).json({ message: "Something went wrong", error: error });
+        }
+        return res.status(200).send(docs);
+    })
 });
 
 module.exports = router;

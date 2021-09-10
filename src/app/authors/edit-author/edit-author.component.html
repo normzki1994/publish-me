@@ -1,0 +1,49 @@
+<section class="edit-author">
+    <app-loading-spinner [isLoading]="isLoading"></app-loading-spinner>
+
+    <app-modal *ngIf="modalType && modalMessage && !isLoading" [modalType]="modalType" [message]="modalMessage"></app-modal>
+
+    <h1 class="title">Add Author</h1>
+
+    <form class="author-form" [formGroup]="authorForm" (ngSubmit)="onSubmit($event)">
+        <input type="hidden" name="id" [value]="authorId">
+        <div class="image">
+            <div class="image-preview-container" *ngIf="imagePreview != '' && imagePreview">
+                <img [src]="imagePreview" [alt]="name" class="image-preview">
+            </div>
+            <div class="form-control-group">
+                <label for="image" class="form-label">Image</label>
+                <input class="form-control" type="file" name="image" id="image" accept="image/*"
+                (change)="onImagePicked($event)">
+                <div class="error-list" *ngIf="image?.invalid && (image?.dirty || image?.touched)">
+                    <span class="error-message" *ngIf="image?.errors?.required">Image is required</span>
+                    <span class="error-message" *ngIf="image?.errors?.invalidFileType">Invalid file type.</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-control-group">
+            <label for="name" class="form-label">Name</label>
+            <input class="form-control" type="text" name="name" id="" placeholder="Name" formControlName="name">
+            <div class="error-list" *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+                <span class="error-message" *ngIf="name?.errors?.required">Name is required</span>
+                <span class="error-message" *ngIf="name?.errors?.maxlength">Name max length is 150</span>
+                    <span class="error-message" *ngIf="name?.errors?.minlength">Name min length is 2</span>
+            </div>
+        </div>
+
+        <div class="form-control-group">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" name="description" id="description" placeholder="Description"
+            formControlName="description"></textarea>
+            <div class="error-list" *ngIf="description?.invalid && (description?.dirty || description?.touched)">
+                <span class="error-message" *ngIf="description?.errors?.required">Description is required</span>
+                <span class="error-message" *ngIf="description?.errors?.maxlength">Description max length is 150</span>
+                <span class="error-message" *ngIf="description?.errors?.minlength">Description min length is 10</span>
+            </div>
+        </div>
+
+        <input type="submit" value="Edit Author" class="submit-button" [disabled]="!authorForm.valid" 
+        [ngStyle]="!authorForm.valid ? {'backgroundColor': 'gray'} : {}">
+    </form>
+</section>

@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const config = require("config");
 const bcrypt = require("bcrypt");
+const cors = require("cors")
 
 const path = require("path");
 
@@ -19,6 +20,7 @@ mongoose.connect(config.get("dbConfig.connectionString"),
         console.log("Database connection failed");
     });
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/images", express.static(path.join("images")));

@@ -9,7 +9,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="link">
+                    <a routerLink="/admin/authors" class="link">
                         <span class="link-icon"><fa-icon [icon]="faUserEdit"></fa-icon></span> Authors
                     </a>
                 </li>
@@ -44,7 +44,7 @@
         <div class="user-details-collapse" [ngClass]="showUserDetails ? 'show' : ''">
             <img src="../../../assets/images/author-2.jpg" alt="" class="user-avatar">
             <h2 class="user-name">{{user.name}}</h2>
-            <button type="button" class="logout-button">Logout</button>
+            <button type="button" class="logout-button" (click)="onLogout()">Logout</button>
         </div>
     </div>
 </header>

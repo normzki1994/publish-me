@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+
 import { faFacebook, faTwitter, faInstagram, faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import { Author } from '../author.model';
+import { AuthorService } from '../author.service';
 
 @Component({
   selector: 'app-author-page',
@@ -13,22 +16,58 @@ export class AuthorPageComponent implements OnInit {
   faTwitter = faTwitter;
   faInstagram = faInstagram;
   faGoogle = faGoogle;
+  faSearch = faSearch;
 
-  authors: Author[] = [
-    { name: "John Yell", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", image: "author.jpg" },
-    { name: "Mark Kenely", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", image: "author-2.jpg" },
-    { name: "Leon Barron", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", image: "author-3.jpg" },
-    { name: "Pablo Olson", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", image: "author-4.jpg" },
-    { name: "Ihsan Atkinson", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", image: "author-5.jpg" },
-    { name: "William Stark", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", image: "author-6.jpg" },
-    { name: "Lillie Penn", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", image: "author-7.jpg" },
-    { name: "Manha Stephenson", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", image: "author-8.jpg" },
-    { name: "Mila Mcmanus", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", image: "author-9.jpg" }
-  ]
+  authors: any;
 
-  constructor() { }
+  currentPage: number = 1;
+  pageSize: number = 9;
+  lastPage: number = 1;
+
+  isLoading: boolean = false;
+  modalType: string | null = null;
+  modalMessage: string | null = null;
+
+  constructor(private authorService: AuthorService) { }
 
   ngOnInit(): void {
+    this.loadAuthors("");
   }
 
+  onSearch(searchText: string) {
+    this.currentPage = 1;
+    this.loadAuthors(searchText);
+  }
+
+  onPrevious(searchText: string) {
+    if(this.currentPage == 1) {
+      return;
+    }
+
+    this.currentPage = this.currentPage - 1;
+    this.loadAuthors(searchText);
+  }
+
+  onNext(searchText: string) {
+    if(this.currentPage >= this.lastPage) {
+      return;
+    }
+
+    this.currentPage = this.currentPage + 1;
+    this.loadAuthors(searchText);
+  }
+
+  loadAuthors(searchText: string) {
+    this.isLoading = true;
+    window.scroll(0, 0);
+    this.authorService.getAuthors(this.pageSize, this.currentPage, searchText).subscribe(response => {
+      this.isLoading = false;
+      this.authors = response.authors;
+      this.lastPage = response.lastPage;
+    }, error => {
+      this.isLoading = false;
+      this.modalType = "Error";
+      this.modalMessage = error.statusText;
+    });
+  }
 }

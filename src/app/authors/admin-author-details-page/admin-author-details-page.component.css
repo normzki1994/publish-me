@@ -1,0 +1,111 @@
+.author {
+    padding: 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.no-author-title {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.author-card {
+    border: 1px solid gray;
+}
+
+.author-image {
+    display: block;
+    width: 100%;
+    max-height: 758px;
+}
+
+.author-details {
+    padding: 1rem;
+}
+
+.author-name {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.author-description {
+    line-height: 1.25rem;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid gray;
+}
+
+.edit-button,
+.delete-button {
+    display: block;
+    margin: 0 0.25rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+}
+
+.edit-button {
+    background-color: #DB605C;
+}
+
+.delete-button {
+    background-color: #8F312E;
+}
+
+.author-books-title {
+    font-size: 1.25rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.author-books {
+    padding: 1rem;
+}
+
+.book-list {
+    list-style: none;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.book-list li {
+    border-bottom: 1px solid gray;
+    padding: 0.5rem;
+}
+
+.book-list li:last-child {
+    border-bottom: none;
+}
+
+.book-list .book-link {
+    text-decoration: none;
+    color: #35678F;
+}
+
+@media(min-width: 768px) {
+    .author-card {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        justify-content: center;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .author-info {
+        border-right: 1px solid gray;
+    }
+
+    .menu {
+        border-bottom: none;
+    }
+}

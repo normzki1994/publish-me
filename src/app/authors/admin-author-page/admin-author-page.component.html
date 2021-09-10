@@ -29,7 +29,7 @@
                     <p class="author-description">{{author.description}}</p>
                 </div>
                 <div class="menu">
-                    <a href="#" class="view-button">View</a>
+                    <a [routerLink]="['/admin', 'authors', author._id]" class="view-button">View</a>
                     <a [routerLink]="['/admin', 'edit-author', author._id]" class="edit-button">Edit</a>
                     <button type="button" class="delete-button" (click)="onDelete(author._id)">Delete</button>
                 </div>

@@ -30,6 +30,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { AddAuthorComponent } from './authors/add-author/add-author.component';
 import { AdminAuthorPageComponent } from './authors/admin-author-page/admin-author-page.component';
 import { EditAuthorComponent } from './authors/edit-author/edit-author.component';
+import { AdminAuthorDetailsPageComponent } from './authors/admin-author-details-page/admin-author-details-page.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { EditAuthorComponent } from './authors/edit-author/edit-author.component
     MainPageComponent,
     AddAuthorComponent,
     AdminAuthorPageComponent,
-    EditAuthorComponent
+    EditAuthorComponent,
+    AdminAuthorDetailsPageComponent
   ],
   imports: [
     BrowserModule,

@@ -60,6 +60,20 @@ export class AuthorService {
             params: {
                 token: token
             }
-        })
+        });
+    }
+
+    deleteAuthor(authorId: any) {
+        let token;
+        const userData = localStorage.getItem("userData");
+        if(userData) {
+            token = JSON.parse(userData)?.token;
+        };
+
+        return this.http.delete("http://localhost:3000/api/authors/" + authorId, {
+            params: {
+                token: token
+            }
+        });
     }
 }

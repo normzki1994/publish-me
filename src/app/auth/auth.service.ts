@@ -8,7 +8,7 @@ import { User } from "./user.model";
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
-    @Input() authStatusListener = new BehaviorSubject<User | null | any>(null);
+    @Input() authStatusListener = new BehaviorSubject<any>(null);
     @Input() token: string = "";
     @Input() private tokeExpirationTimer: any;
     

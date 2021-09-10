@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { AuthorService } from '../author.service';
@@ -21,7 +22,7 @@ export class AdminAuthorPageComponent implements OnInit {
   modalType: string | null = null;
   modalMessage: string | null = null;
 
-  constructor(private authorService: AuthorService) { }
+  constructor(private authorService: AuthorService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadAuthors("");
@@ -61,6 +62,20 @@ export class AdminAuthorPageComponent implements OnInit {
       this.isLoading = false;
       this.modalType = "Error";
       this.modalMessage = error.statusText;
+    });
+  }
+
+  onDelete(authorId: any) {
+    this.isLoading = true;
+
+    this.authorService.deleteAuthor(authorId).subscribe(response => {
+      this.isLoading = false;
+      this.currentPage = 1;
+      this.loadAuthors("");
+    }, error => {
+      this.isLoading = false;
+      this.modalType = "Error";
+      this.modalMessage = "Something went wrong";
     });
   }
 }

@@ -36,6 +36,10 @@
                     <a routerLink="/login" class="link" (click)="toggleNavCollapse()">Login</a>
                     <hr>
                 </li>
+                <li *ngIf="user?.isAdmin">
+                    <a routerLink="/admin" class="link" (click)="toggleNavCollapse()">Admin Portal</a>
+                    <hr>
+                </li>
                 <li *ngIf="user" class="user-details">
                     <span class="login-user-name" *ngIf="user">{{user.name}}</span>
                     <button type="button" class="logout-button" (click)="onLogout()">Logout</button>

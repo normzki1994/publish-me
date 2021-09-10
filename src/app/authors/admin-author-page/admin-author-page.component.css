@@ -108,6 +108,7 @@
     color: white;
     font-weight: 500;
     border: none;
+    cursor: pointer;
 }
 
 .view-button {

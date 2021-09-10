@@ -105,4 +105,18 @@ router.put("/:id", checkAuth, multer({ storage: storage }).single("image"), (req
     })
 });
 
+router.delete("/:id", checkAuth, (req, res, next) => {
+    if(!req.userData.isAdmin) {
+        return res.status(401).json({ message: "Not admin. User not authorized" });
+    }
+    
+    const authorId = req.params.id;
+
+    Author.deleteOne({ _id: authorId }).then(result => {
+        return res.status(200).send(result);
+    }).catch(error => {
+        return res.status(500).json({ message: "Something went wrong", error: error });
+    })
+});
+
 module.exports = router;

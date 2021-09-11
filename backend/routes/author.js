@@ -40,14 +40,15 @@ router.post("", checkAuth, multer({ storage: storage }).single("image"), (req, r
     author.save().then(author => {
         return res.status(201).json({
             message: "Author added succesfully", 
-            post: author
+            author: author
         });
     }).catch(error => {
         return res.status(500).json({ message: "Something went wrong", error: error });
     });
 });
 
-router.get("/", async (req, res, next) => {
+// The order of get routers matters
+router.get("", async (req, res, next) => {
     let pageSize = req.query.pageSize ? +req.query.pageSize : 1;
     let currentPage = req.query.currentPage ? +req.query.currentPage : 1;
     let searchText = req.query.searchText;
@@ -71,6 +72,15 @@ router.get("/", async (req, res, next) => {
             });
         });
 });
+
+router.get("/all", (req, res, next) => {
+    Author.find().sort({ name: 1 }).then(authors => {
+        return res.status(200).send(authors);
+    }).catch(error => {
+        console.log(error)
+        return res.status(500).json({ message: "Something went wrong", error: error });
+    })
+})
 
 router.get("/:id", (req, res, next) => {
     const authorId = req.params.id;

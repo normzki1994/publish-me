@@ -1,0 +1,77 @@
+<section class="book">
+    <app-loading-spinner [isLoading]="isLoading"></app-loading-spinner>
+
+    <app-modal *ngIf="modalType && modalMessage && !isLoading" [modalType]="modalType" [message]="modalMessage"></app-modal>
+
+    <h1 class="title">Add Book</h1>
+
+    <form class="author-form" [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+        <div class="image">
+            <div class="image-preview-container" *ngIf="imagePreview != '' && imagePreview">
+                <img [src]="imagePreview" [alt]="title" class="image-preview">
+            </div>
+            <div class="form-control-group">
+                <label for="image" class="form-label">Image</label>
+                <input class="form-control" type="file" name="image" id="image" accept="image/*"
+                (change)="onImagePicked($event)">
+                <div class="error-list" *ngIf="image?.invalid && (image?.dirty || image?.touched)">
+                    <span class="error-message" *ngIf="image?.errors?.required">Image is required</span>
+                    <span class="error-message" *ngIf="image?.errors?.invalidFileType">Invalid file type.</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-control-group">
+            <label for="title" class="form-label">Title</label>
+            <input class="form-control" type="text" name="title" id="title" placeholder="Title" formControlName="title">
+            <div class="error-list" *ngIf="title?.invalid && (title?.dirty || title?.touched)">
+                <span class="error-message" *ngIf="title?.errors?.required">Title is required</span>
+                <span class="error-message" *ngIf="title?.errors?.maxlength">Title max length is 150</span>
+                <span class="error-message" *ngIf="title?.errors?.minlength">Title min length is 2</span>
+            </div>
+        </div>
+
+        <div class="form-control-group">
+            <label for="author" class="form-label">Author</label>
+            <select name="author" id="author" class="form-control" formControlName="author">
+                <option value="" selected>Select author</option>
+                <option [value]="author._id" *ngFor="let author of authors">{{author.name}}</option>
+            </select>
+            <div class="error-list" *ngIf="author?.invalid && (author?.dirty || author?.touched)">
+                <span class="error-message" *ngIf="author?.errors?.required">Description is required</span>
+                <span class="error-message" *ngIf="author?.errors?.maxlength">Description max length is 150</span>
+                <span class="error-message" *ngIf="author?.errors?.minlength">Description min length is 10</span>
+            </div>
+        </div>
+
+        <div class="form-control-group">
+            <label for="price" class="form-label">Price</label>
+            <input class="form-control" type="number" name="price" id="price" placeholder="Price" formControlName="price">
+            <div class="error-list" *ngIf="price?.invalid && (price?.dirty || price?.touched)">
+                <span class="error-message" *ngIf="price?.errors?.required">Price is required</span>
+                <span class="error-message" *ngIf="price?.errors?.max">Maximum price of 500</span>
+                <span class="error-message" *ngIf="price?.errors?.min">Minimum price of 10</span>
+            </div>
+        </div>
+
+        <div class="form-control-group">
+            <label for="genre" class="form-label">Genre</label>
+            <input class="form-control" type="text" name="genre" id="genre" placeholder="Genre" formControlName="genre">
+            <div class="error-list" *ngIf="genre?.invalid && (genre?.dirty || genre?.touched)">
+                <span class="error-message" *ngIf="title?.errors?.required">Genre is required</span>
+            </div>
+        </div>
+
+        <div class="form-control-group">
+            <label for="datePublished" class="form-label">Date Published</label>
+            <input class="form-control" type="date" name="datePublished" id="datePublished" placeholder="Date Published" 
+            formControlName="date-published">
+            <div class="error-list" *ngIf="price?.invalid && (datePublished?.dirty || datePublished?.touched)">
+                <span class="error-message" *ngIf="datePublished?.errors?.required">Price is required</span>
+            </div>
+        </div>
+
+        <input type="submit" value="Add Book" class="submit-button" [disabled]="!bookForm.valid" 
+        [ngStyle]="!bookForm.valid ? {'backgroundColor': 'gray'} : {}">
+    </form>
+</section>

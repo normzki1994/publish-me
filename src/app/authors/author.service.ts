@@ -34,7 +34,7 @@ export class AuthorService {
                 currentPage: currentPage,
                 searchText: searchText
             }
-        })
+        });
     }
 
     getAuthor(authorId: any) {
@@ -75,5 +75,9 @@ export class AuthorService {
                 token: token
             }
         });
+    }
+
+    getAllAuthors() {
+        return this.http.get<{authors: any, lastPage: number}>("http://localhost:3000/api/authors/all");
     }
 }

@@ -19,6 +19,7 @@ import { AddAuthorComponent } from "./authors/add-author/add-author.component";
 import { AdminAuthorPageComponent } from "./authors/admin-author-page/admin-author-page.component";
 import { EditAuthorComponent } from "./authors/edit-author/edit-author.component";
 import { AdminAuthorDetailsPageComponent } from "./authors/admin-author-details-page/admin-author-details-page.component";
+import { AddBookComponent } from "./books/add-book/add-book.component";
 
 const routes: Routes = [
     { path: "", component: MainPageComponent , children: [
@@ -37,7 +38,8 @@ const routes: Routes = [
         { path: "authors", component: AdminAuthorPageComponent },
         { path: "add-author", component: AddAuthorComponent },
         { path: "edit-author/:id", component: EditAuthorComponent },
-        { path: "authors/:id", component: AdminAuthorDetailsPageComponent }
+        { path: "authors/:id", component: AdminAuthorDetailsPageComponent },
+        { path: "add-book", component: AddBookComponent }
     ] }
 ];
 

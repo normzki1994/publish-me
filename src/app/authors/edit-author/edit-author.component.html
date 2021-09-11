@@ -3,7 +3,7 @@
 
     <app-modal *ngIf="modalType && modalMessage && !isLoading" [modalType]="modalType" [message]="modalMessage"></app-modal>
 
-    <h1 class="title">Add Author</h1>
+    <h1 class="title">Edit Author</h1>
 
     <form class="author-form" [formGroup]="authorForm" (ngSubmit)="onSubmit($event)">
         <input type="hidden" name="id" [value]="authorId">

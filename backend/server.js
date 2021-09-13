@@ -9,6 +9,7 @@ const path = require("path");
 const userRoutes = require("./routes/user");
 const authorRoutes = require("./routes/author");
 const bookRoutes = require("./routes/book");
+const blogRoutes = require("./routes/blog");
 
 const app = express();
 
@@ -36,6 +37,7 @@ app.use((req, res, next) => {
 app.use("/api/users", userRoutes);
 app.use("/api/authors", authorRoutes);
 app.use("/api/books", bookRoutes);
+app.use("/api/blogs", blogRoutes);
 
 // For creating admin user
 // const userModel = require("./models/user");

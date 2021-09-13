@@ -66,7 +66,7 @@
             <label for="datePublished" class="form-label">Date Published</label>
             <input class="form-control" type="date" name="datePublished" id="datePublished" placeholder="Date Published" 
             formControlName="date-published">
-            <div class="error-list" *ngIf="price?.invalid && (datePublished?.dirty || datePublished?.touched)">
+            <div class="error-list" *ngIf="datePublished?.invalid && (datePublished?.dirty || datePublished?.touched)">
                 <span class="error-message" *ngIf="datePublished?.errors?.required">Price is required</span>
             </div>
         </div>

@@ -34,6 +34,7 @@ import { AdminAuthorDetailsPageComponent } from './authors/admin-author-details-
 import { AddBookComponent } from './books/add-book/add-book.component';
 import { AdminBookPageComponent } from './books/admin-book-page/admin-book-page.component';
 import { EditBookComponent } from './books/edit-book/edit-book.component';
+import { AddBlogComponent } from './blogs/add-blog/add-blog.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { EditBookComponent } from './books/edit-book/edit-book.component';
     AdminAuthorDetailsPageComponent,
     AddBookComponent,
     AdminBookPageComponent,
-    EditBookComponent
+    EditBookComponent,
+    AddBlogComponent
   ],
   imports: [
     BrowserModule,

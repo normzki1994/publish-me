@@ -1,0 +1,59 @@
+<div class="blog-page">
+    <app-loading-spinner [isLoading]="isLoading"></app-loading-spinner>
+
+    <section class="blog-section">
+        <app-modal *ngIf="modalType && modalMessage && !isLoading" [modalType]="modalType" [message]="modalMessage"></app-modal>
+        
+        <h1 class="title">Add Blog</h1>
+
+        <form class="blog-form" [formGroup]="blogForm" (ngSubmit)="onSubmit()">
+            <div class="image">
+                <div class="image-preview-container" *ngIf="imagePreview != '' && imagePreview">
+                    <img [src]="imagePreview" [alt]="title" class="image-preview">
+                </div>
+                <div class="form-control-group">
+                    <label for="image" class="form-label">Image</label>
+                    <input class="form-control" type="file" name="image" id="image" accept="image/*"
+                    (change)="onImagePicked($event)">
+                    <div class="error-list" *ngIf="image?.invalid && (image?.dirty || image?.touched)">
+                        <span class="error-message" *ngIf="image?.errors?.required">Image is required</span>
+                        <span class="error-message" *ngIf="image?.errors?.invalidFileType">Invalid file type.</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-control-group">
+                <label for="name" class="form-label">Title</label>
+                <input class="form-control" type="text" name="title" id="" placeholder="Title" formControlName="title">
+                <div class="error-list" *ngIf="title?.invalid && (title?.dirty || title?.touched)">
+                    <span class="error-message" *ngIf="title?.errors?.required">Title is required</span>
+                    <span class="error-message" *ngIf="title?.errors?.maxlength">Title max length is 150</span>
+                        <span class="error-message" *ngIf="title?.errors?.minlength">Title min length is 2</span>
+                </div>
+            </div>
+    
+            <div class="form-control-group">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" name="description" id="description" placeholder="Description"
+                formControlName="description"></textarea>
+                <div class="error-list" *ngIf="description?.invalid && (description?.dirty || description?.touched)">
+                    <span class="error-message" *ngIf="description?.errors?.required">Description is required</span>
+                    <span class="error-message" *ngIf="description?.errors?.maxlength">Description max length is 400</span>
+                    <span class="error-message" *ngIf="description?.errors?.minlength">Description min length is 10</span>
+                </div>
+            </div>
+
+            <div class="form-control-group">
+                <label for="datePublished" class="form-label">Date</label>
+                <input class="form-control" type="date" name="datePublished" id="datePublished" placeholder="Date" 
+                formControlName="date">
+                <div class="error-list" *ngIf="date?.invalid && (date?.dirty || date?.touched)">
+                    <span class="error-message" *ngIf="date?.errors?.required">Date is required</span>
+                </div>
+            </div>
+    
+            <input type="submit" value="Add Blog" class="submit-button" [disabled]="!blogForm.valid" 
+            [ngStyle]="!blogForm.valid ? {'backgroundColor': 'gray'} : {}">
+        </form>
+    </section>
+</div>

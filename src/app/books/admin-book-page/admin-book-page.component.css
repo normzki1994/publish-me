@@ -1,0 +1,167 @@
+.admin-book-section {
+    padding: 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.title-menu {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.title {
+    display: inline-block;
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.add-book-button {
+    display: block;
+    text-decoration: none;
+    padding: 0.5rem;
+    background-color: #DB605C;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.search-menu {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.search-label {
+    display: block;
+    margin-right: 0.25rem;
+}
+
+.search-text {
+    padding: 0.25rem;
+    margin-right: 0.25rem;
+}
+
+.search-text:focus {
+    outline: none;
+}
+
+.search-button {
+    display: block;
+    padding: 0.5rem;
+    border: none;
+    background-color: #4699DB;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.no-book-title {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.book-list {
+    margin-bottom: 1rem;
+}
+
+.book {
+    border: 1px solid gray;
+    margin-bottom: 1rem;
+}
+
+.book-image {
+    display: block;
+    width: 100%;
+    max-height: 732px;
+}
+
+.book-details {
+    padding: 0.5rem;
+}
+
+.book-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.book-author,
+.book-price,
+.book-genre,
+.book-date-published {
+    color: rgb(49, 49, 49);
+    margin-bottom: 0.25rem;
+}
+
+.book-author-value,
+.book-price-value,
+.book-genre-value,
+.book-date-published-value {
+    font-weight: 600;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+
+.edit-button,
+.delete-button {
+    display: block;
+    margin: 0 0.25rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+}
+
+.edit-button {
+    background-color: #DB605C;
+}
+
+.delete-button {
+    background-color: #8F312E;
+}
+
+.indicators {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.next-button,
+.previous-button {
+    display: block;
+    margin: 0 0.25rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: white;
+    border: none;
+    background-color: #35678F;
+    cursor: pointer;
+}
+
+@media(min-width: 768px) {
+    .book-list {
+        display: grid;
+        grid-template-columns: 45% 45%;
+        column-gap: 1rem;
+        justify-content: center;
+    }
+
+    .book-image {
+        max-height: 428px;
+    }
+}
+
+@media(min-width: 992px) {
+    .book-list {
+        grid-template-columns: 30% 30% 30%;
+    }
+}

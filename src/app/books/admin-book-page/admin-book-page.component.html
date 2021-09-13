@@ -1,0 +1,53 @@
+<div class="admin-book-page">
+    <app-loading-spinner [isLoading]="isLoading"></app-loading-spinner>
+
+    <section class="admin-book-section">
+        <app-modal *ngIf="modalType && modalMessage && !isLoading" [modalType]="modalType" [message]="modalMessage"></app-modal>
+        
+        <div class="title-menu">
+            <h1 class="title">Book List</h1>
+            <a routerLink="/admin/add-book" class="add-book-button">Add Book</a>
+        </div>
+
+        <div class="search-menu">
+            <label for="searchText" class="search-label">Search</label>
+            <input type="text" class="search-text" id="searchText" name="searchText" placeholder="Search" #searchText>
+            <button type="button" class="search-button" (click)="onSearch(searchText.value)">
+                <fa-icon [icon]="faSearch" class="icon"></fa-icon>
+            </button>
+        </div>
+
+        <h2 class="no-book-title" *ngIf="!books || books?.length == 0">No Book found</h2>
+
+        <div class="book-list" *ngIf="books || books?.length > 0">
+            <div class="book" *ngFor="let book of books">
+                <div class="book-image-container">
+                    <img [src]="book.imagePath" alt="" class="book-image">
+                </div>
+                <div class="book-details">
+                    <h3 class="book-title">{{book.title}}</h3>
+                    <p class="book-author">Author: <span class="book-author-value">{{book.author.name}}</span></p>
+                    <p class="book-price">Price: <span class="book-price-value">{{book.price}}</span></p>
+                    <p class="book-genre">Genre: <span class="book-genre-value">{{book.genre}}</span></p>
+                    <p class="book-date-published">Date Published: 
+                        <span class="book-date-published-value">{{ book.datePublished.slice(0,10) }}</span>
+                    </p>
+                </div>
+                <div class="menu">
+                    <a [routerLink]="['/admin', 'edit-book', book._id]" class="edit-button">Edit</a>
+                    <button type="button" class="delete-button" (click)="onDelete(book._id)">Delete</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="indicators">
+            <button type="button" class="previous-button" [disabled]="currentPage == 1"
+            [ngStyle]="currentPage == 1 ? {'background-color': 'gray'} : {}"
+            (click)="onPrevious(searchText.value)">Prev</button>
+
+            <button type="button" class="next-button" [disabled]="currentPage >= lastPage"
+            [ngStyle]="currentPage >= lastPage ? {'background-color': 'gray'} : {}"
+            (click)="onNext(searchText.value)">Next</button>
+        </div>
+    </section>
+</div>

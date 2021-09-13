@@ -29,4 +29,14 @@ export class BookService {
             }
         });
     }
+
+    getBooks(pageSize: any, currentPage: any, searchText: string) {
+        return this.http.get<{books: any, lastPage: number}>("http://localhost:3000/api/books/", {
+            params: {
+                pageSize: pageSize,
+                currentPage: currentPage,
+                searchText: searchText
+            }
+        });
+    }
 }

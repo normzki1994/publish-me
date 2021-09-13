@@ -5,6 +5,8 @@ import { AuthorService } from 'src/app/authors/author.service';
 import { BookService } from "../book.service";
 
 import { isImageValidator } from 'src/app/validators/is-image.validator';
+import { Router } from '@angular/router';
+import { faWindows } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-add-book',
@@ -14,8 +16,8 @@ import { isImageValidator } from 'src/app/validators/is-image.validator';
 export class AddBookComponent implements OnInit {
   bookForm: FormGroup = new FormGroup({
     "title": new FormControl("", [Validators.required, Validators.maxLength(150), Validators.minLength(2)]),
-    "image": new FormControl("", [Validators.required, isImageValidator()]),
-    "author": new FormControl("", [Validators.required]), // Ref to author model (author id)
+    "image": new FormControl(null, [Validators.required, isImageValidator()]),
+    "author": new FormControl(null, [Validators.required]), // Ref to author model (author id)
     "price": new FormControl(0, [Validators.required, Validators.min(10), Validators.max(500)]),
     "genre": new FormControl("", [Validators.required]),
     "date-published": new FormControl(new Date(), [Validators.required])
@@ -36,7 +38,7 @@ export class AddBookComponent implements OnInit {
   modalType: string | null = null;
   modalMessage: string | null = null;
 
-  constructor(private authorService: AuthorService, private bookService: BookService) { }
+  constructor(private authorService: AuthorService, private bookService: BookService, private router: Router) { }
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -59,11 +61,20 @@ export class AddBookComponent implements OnInit {
         this.isLoading = false;
         this.modalType = "Info";
         this.modalMessage = "Book added successfully";
+        window.scroll(0, 0);
+        // this.title?.reset();
+        // this.image?.reset();
+        // this.author?.reset();
+        // this.price?.reset();
+        // this.genre?.reset();
+        // this.datePublished?.reset();
+        // this.imagePreview = null;
+        // this.router.navigate(["/admin/books"]);
       }, error => {
         this.isLoading = false;
         this.modalType = "Error";
         this.modalMessage = "Something went wrong";
-      })
+      });
   }
 
   onImagePicked(event: Event) {

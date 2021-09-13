@@ -51,4 +51,30 @@ router.post("", checkAuth, multer({ storage: storage }).single("image"), (req, r
     });
 });
 
+router.get("", async (req, res, next) => {
+    let pageSize = req.query.pageSize ? +req.query.pageSize : 1;
+    let currentPage = req.query.currentPage ? +req.query.currentPage : 1;
+    let searchText = req.query.searchText;
+    let searchParam = { title: { $regex: searchText, $options: "i" } };
+    let lastPage = 1;
+
+    var bookCount = await Book.find(searchParam).count().exec();
+    lastPage = Math.ceil(bookCount / pageSize)
+
+    await Book.find(searchParam)
+        .populate("author")
+        .skip(pageSize * (currentPage - 1))
+        .limit(pageSize)
+        .sort({ title: 1 })
+        .then(books => {
+            books = books;
+            return res.status(200).send({ books: books, lastPage: lastPage });
+        }).catch(error => {
+            return res.status(500).json({
+                message: "Something went wrong",
+                error: error
+            });
+        });
+})
+
 module.exports = router;

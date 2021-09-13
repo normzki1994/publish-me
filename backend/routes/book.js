@@ -75,6 +75,41 @@ router.get("", async (req, res, next) => {
                 error: error
             });
         });
+});
+
+router.get("/:id", (req, res, next) => {
+    const bookId = req.params.id;
+
+    Book.findById(bookId).then(book => {
+        return res.status(200).send(book);
+    }, error => {
+        return res.status(500).json({
+            message: "Something went wrong",
+            error: error
+        });
+    });
+});
+
+router.put("/:id", checkAuth, multer({ storage: storage }).single("image"), (req, res, next) => {
+    const bookId = req.params.id;
+    if(!req.userData.isAdmin) {
+        return res.status(401).json({ message: "Not admin. User not authorized" });
+    }
+
+    const book = { title: req.body.title, author: req.body.author, price: req.body.price, genre: req.body.genre,
+        datePublished: req.body.datePublished };
+        
+    const url = req.protocol + "://" + req.get("host");
+    if(req.file) {
+        book.imagePath = url + "/images/books/" + req.file.filename
+    }
+
+    Book.findByIdAndUpdate(bookId, { $set: book }, { upsert: true, new: true }, function(error, docs) {
+        if(error) {
+            return res.status(500).json({ message: "Something went wrong", error: error });
+        }
+        return res.status(200).send(docs);
+    });
 })
 
 module.exports = router;

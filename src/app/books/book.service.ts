@@ -64,4 +64,18 @@ export class BookService {
             }
         });
     }
+
+    deleteBook(bookId: any) {
+        let token;
+        const userData = localStorage.getItem("userData");
+        if(userData) {
+            token = JSON.parse(userData)?.token;
+        }
+
+        return this.http.delete("http://localhost:3000/api/books/" + bookId, {
+            params: {
+                token: token
+            }
+        });
+    }
 }

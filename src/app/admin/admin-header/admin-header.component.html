@@ -4,32 +4,32 @@
         <div class="nav-collapse">
             <ul class="link-list" [ngClass]="showNav ? 'show' : ''">
                 <li>
-                    <a href="#" class="link">
+                    <a routerLink="/admin" class="link" (click)="toggleNavCollapse()">
                         <span class="link-icon"><fa-icon [icon]="faRocket"></fa-icon></span> Dashboard
                     </a>
                 </li>
                 <li>
-                    <a routerLink="/admin/authors" class="link">
+                    <a routerLink="/admin/authors" class="link" (click)="toggleNavCollapse()">
                         <span class="link-icon"><fa-icon [icon]="faUserEdit"></fa-icon></span> Authors
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="link">
+                    <a routerLink="/admin/books" class="link" (click)="toggleNavCollapse()">
                         <span class="link-icon"><fa-icon [icon]="faUserEdit"></fa-icon></span> Books
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="link">
+                    <a href="#" class="link" (click)="toggleNavCollapse()">
                         <span class="link-icon"><fa-icon [icon]="faBookOpen"></fa-icon></span> Books for Sale
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="link">
+                    <a href="#" class="link" (click)="toggleNavCollapse()">
                         <span class="link-icon"><fa-icon [icon]="faEnvelope"></fa-icon></span> Messages
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="link">
+                    <a href="#" class="link" (click)="toggleNavCollapse()">
                         <span class="link-icon"><fa-icon [icon]="faMoneyCheck"></fa-icon></span> Sales
                     </a>
                 </li>

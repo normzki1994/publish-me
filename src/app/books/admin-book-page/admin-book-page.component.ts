@@ -34,17 +34,17 @@ export class AdminBookPageComponent implements OnInit {
   }
 
   onDelete(booksId: any) {
-    // this.isLoading = true;
+    this.isLoading = true;
 
-    // this.bookService.deleteAuthor(authorId).subscribe(response => {
-    //   this.isLoading = false;
-    //   this.currentPage = 1;
-    //   this.loadAuthors("");
-    // }, error => {
-    //   this.isLoading = false;
-    //   this.modalType = "Error";
-    //   this.modalMessage = "Something went wrong";
-    // });
+    this.bookService.deleteBook(booksId).subscribe(response => {
+      this.isLoading = false;
+      this.currentPage = 1;
+      this.loadBooks("");
+    }, error => {
+      this.isLoading = false;
+      this.modalType = "Error";
+      this.modalMessage = "Something went wrong";
+    });
   }
 
   loadBooks(searchText: string) {

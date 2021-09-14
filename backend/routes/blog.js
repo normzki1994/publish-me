@@ -63,7 +63,7 @@ router.get("", async (req, res, next) => {
     await Blog.find(searchParam)
         .skip(pageSize * (currentPage - 1))
         .limit(pageSize)
-        .sort({ title: 1 })
+        .sort({ date: -1 })
         .then(blogs => {
             return res.status(200).send({ blogs: blogs, lastPage: lastPage });
         }).catch(error => {
@@ -82,6 +82,26 @@ router.get("/:id", (req, res, next) => {
     }).catch(error => {
         return res.status(500).json({ message: "Something wen wrong", error: error });
     });
+});
+
+router.put("/:id", checkAuth, multer({ storage: storage }).single("image"), (req, res, next) => {
+    const blogId = req.params.id;
+    if(!req.userData.isAdmin) {
+        return res.status(401).json({ message: "Not admin. User not authorized" });
+    }
+
+    const blog = { title: req.body.title, description: req.body.description, date: req.body.date };
+    const url = req.protocol + "://" + req.get("host");
+    if(req.file) {
+        blog.imagePath = url + "/images/blogs/" + req.file.filename
+    }
+
+    Blog.findByIdAndUpdate(blogId, { $set: blog }, { upsert: true, new: true }, function(error, docs) {
+        if(error) {
+            return res.status(500).json({ message: "Something went wrong", error: error });
+        }
+        return res.status(200).send(docs);
+    })
 })
 
 module.exports = router;

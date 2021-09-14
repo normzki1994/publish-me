@@ -27,7 +27,7 @@
                 <div class="blog-details">
                     <h2 class="blog-title">{{blog.title}}</h2>
                     <p class="blog-description">{{blog.description}}</p>
-                    <span class="blog-date">{{blog.date}}</span>
+                    <span class="blog-date">{{blog.date.slice(0,10)}}</span>
                 </div>
                 <div class="menu">
                     <a [routerLink]="['/admin', 'blogs', blog._id]" class="view-button">View</a>

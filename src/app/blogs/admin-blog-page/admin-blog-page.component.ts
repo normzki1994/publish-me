@@ -59,7 +59,6 @@ export class AdminBlogPageComponent implements OnInit {
     this.isLoading = true;
     window.scroll(0, 0);
     this.blogService.getBlogs(this.pageSize, this.currentPage, searchText).subscribe(response => {
-      console.log(response.blogs)
       this.isLoading = false;
       this.blogs = response.blogs;
       this.lastPage = response.lastPage;

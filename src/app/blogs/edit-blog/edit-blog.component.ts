@@ -29,6 +29,8 @@ export class EditBlogComponent implements OnInit {
   modalType: string | null = null;
   modalMessage: string | null = null;
 
+  blogId: any = null;
+
   constructor(private blogService: BlogService, private router: Router, private route: ActivatedRoute) { 
 
   }
@@ -37,6 +39,7 @@ export class EditBlogComponent implements OnInit {
     this.isLoading = true;
     this.route.paramMap.subscribe((param: ParamMap) => {
       var blogId = param.get("id");
+      this.blogId = blogId;
 
       this.blogService.getBlog(blogId).subscribe(blog => {
         this.isLoading = false;
@@ -63,10 +66,48 @@ export class EditBlogComponent implements OnInit {
   }
 
   onSubmit() {
-
+    this.isLoading = true;
+    this.blogService
+      .updateBlog(this.blogId, this.title?.value, this.image?.value, this.description?.value, this.date?.value)
+      .subscribe(response => {
+        this.isLoading = false;
+        this.router.navigate(["/admin/blogs"]);
+      }, error => {
+        this.isLoading = false;
+        this.modalType = "Error";
+        this.modalMessage = "Something went wrong";
+      });
   }
 
   onImagePicked(event: Event) {
+    this.blogForm.get("image")?.markAsTouched();
+    this.blogForm.get("image")?.markAsDirty();
 
+    this.getImageFile(event);
+  }
+
+  getImageFile(event: Event) {
+    const file = (<HTMLInputElement>event.target).files;
+    var myImage: any;
+    if(file) {
+        myImage = file[0];
+    } else {
+      return;
+    }
+
+    this.blogForm.get("image")?.addValidators(isImageValidator());
+    this.blogForm.patchValue({image: myImage});
+    this.blogForm.get("image")?.updateValueAndValidity();
+
+    const validImageType = ["image/jpg", "image/jpeg", "image/png"];
+    if(!validImageType.includes(myImage.type)) {
+      return;
+    }
+    
+    const reader = new FileReader();
+    reader.onload = () => {
+        this.imagePreview = reader.result;
+    };
+    reader.readAsDataURL(myImage);
   }
 }

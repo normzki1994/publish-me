@@ -41,4 +41,24 @@ export class BlogService {
     getBlog(blogId: any) {
         return this.http.get<any>("http://localhost:3000/api/blogs/" + blogId);
     }
+
+    updateBlog(blogId: any, title: string, image: File, description: string, date: Date) {
+        let token;
+        const userData = localStorage.getItem("userData");
+        if(userData) {
+            token = JSON.parse(userData)?.token;
+        }
+
+        const blogData = new FormData();
+        blogData.append("title", title);
+        blogData.append("image", image);
+        blogData.append("description", description);
+        blogData.append("date", date.toString());
+
+        return this.http.put("http://localhost:3000/api/blogs/" + blogId, blogData, {
+            params: {
+                token: token
+            }
+        });
+    }
 }

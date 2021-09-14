@@ -92,6 +92,12 @@
     overflow: hidden;
 }
 
+.blog-date {
+    font-size: 0.75rem;
+    color: rgb(65, 65, 65);
+    font-style: italic;
+}
+
 .menu {
     display: flex;
     align-items: center;

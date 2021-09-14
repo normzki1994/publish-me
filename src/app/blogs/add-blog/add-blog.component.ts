@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { isImageValidator } from "../../validators/is-image.validator"
 import { BlogService } from '../blog.service';
@@ -28,7 +29,7 @@ export class AddBlogComponent implements OnInit {
   modalType: string | null = null;
   modalMessage: string | null = null;
 
-  constructor(private blogService: BlogService) { }
+  constructor(private blogService: BlogService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -65,10 +66,7 @@ export class AddBlogComponent implements OnInit {
     this.blogService.addBlog(this.title?.value, this.image?.value, this.description?.value, this.date?.value)
       .subscribe(responseData => {
         this.isLoading = false;
-        this.isLoading = false;
-        this.modalType = "Info";
-        this.modalMessage = "Blog created successully";
-        // this.router.navigate(["/admin/authors"]);
+        this.router.navigate(["/admin/blogs"]);
       }, error => {
         console.log(error);
         this.isLoading = false;

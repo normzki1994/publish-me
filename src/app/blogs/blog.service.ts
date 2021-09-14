@@ -27,4 +27,18 @@ export class BlogService {
             }
         });
     }
+
+    getBlogs(pageSize: any, currentPage: any, searchText: string) {
+        return this.http.get<{blogs: any, lastPage: number}>("http://localhost:3000/api/blogs/", {
+            params: {
+                pageSize: pageSize,
+                currentPage: currentPage,
+                searchText: searchText
+            }
+        });
+    }
+
+    getBlog(blogId: any) {
+        return this.http.get<any>("http://localhost:3000/api/blogs/" + blogId);
+    }
 }

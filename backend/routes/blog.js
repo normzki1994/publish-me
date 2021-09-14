@@ -15,7 +15,7 @@ const MIME_TYPE = {
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
-        callback(null, "images/books/");
+        callback(null, "images/blogs/");
     },
     filename: (req, file, callback) => {
         const ext = MIME_TYPE[file.mimetype];
@@ -49,5 +49,39 @@ router.post("", checkAuth, multer({ storage: storage }).single("image"), (req, r
         return res.status(500).json({ message: "Something went wrong", error: error });
     });
 });
+
+router.get("", async (req, res, next) => {
+    let pageSize = req.query.pageSize ? +req.query.pageSize : 1;
+    let currentPage = req.query.currentPage ? +req.query.currentPage : 1;
+    let searchText = req.query.searchText;
+    let searchParam = { title: { $regex: searchText, $options: "i" } };
+    let lastPage = 1;
+
+    var blogCount = await Blog.find(searchParam).count().exec();
+    lastPage = Math.ceil(blogCount / pageSize)
+
+    await Blog.find(searchParam)
+        .skip(pageSize * (currentPage - 1))
+        .limit(pageSize)
+        .sort({ title: 1 })
+        .then(blogs => {
+            return res.status(200).send({ blogs: blogs, lastPage: lastPage });
+        }).catch(error => {
+            return res.status(500).json({
+                message: "Something went wrong",
+                error: error
+            });
+        });
+});
+
+router.get("/:id", (req, res, next) => {
+    var blogId = req.params.id;
+
+    Blog.findById(blogId).then(blog => {
+        return res.status(200).send(blog);
+    }).catch(error => {
+        return res.status(500).json({ message: "Something wen wrong", error: error });
+    });
+})
 
 module.exports = router;

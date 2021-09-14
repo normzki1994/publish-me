@@ -35,6 +35,8 @@ import { AddBookComponent } from './books/add-book/add-book.component';
 import { AdminBookPageComponent } from './books/admin-book-page/admin-book-page.component';
 import { EditBookComponent } from './books/edit-book/edit-book.component';
 import { AddBlogComponent } from './blogs/add-blog/add-blog.component';
+import { EditBlogComponent } from './blogs/edit-blog/edit-blog.component';
+import { AdminBlogPageComponent } from './blogs/admin-blog-page/admin-blog-page.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,9 @@ import { AddBlogComponent } from './blogs/add-blog/add-blog.component';
     AddBookComponent,
     AdminBookPageComponent,
     EditBookComponent,
-    AddBlogComponent
+    AddBlogComponent,
+    EditBlogComponent,
+    AdminBlogPageComponent
   ],
   imports: [
     BrowserModule,

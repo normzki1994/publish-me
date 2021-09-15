@@ -34,7 +34,16 @@ export class AdminBlogPageComponent implements OnInit {
   }
 
   onDelete(blogId: any) {
-
+    this.isLoading = true;
+    this.blogService.deleteBlog(blogId).subscribe(response => {
+      this.isLoading = false;
+      this.currentPage = 1;
+      this.loadBlogs("");
+    }, error => {
+      this.isLoading = false;
+      this.modalType = "Error";
+      this.modalMessage = error.statusText;
+    })
   }
 
   onPrevious(searchText: string) {

@@ -25,6 +25,7 @@ import { EditBookComponent } from "./books/edit-book/edit-book.component";
 import { AddBlogComponent } from "./blogs/add-blog/add-blog.component";
 import { AdminBlogPageComponent } from "./blogs/admin-blog-page/admin-blog-page.component";
 import { EditBlogComponent } from "./blogs/edit-blog/edit-blog.component";
+import { AdminBlogDetailsComponent } from "./blogs/admin-blog-details/admin-blog-details.component";
 
 const routes: Routes = [
     { path: "", component: MainPageComponent , children: [
@@ -49,7 +50,8 @@ const routes: Routes = [
         { path: "edit-book/:id", component: EditBookComponent },
         { path: "add-blog", component: AddBlogComponent },
         { path: "blogs", component: AdminBlogPageComponent },
-        { path: "edit-blog/:id", component: EditBlogComponent }
+        { path: "edit-blog/:id", component: EditBlogComponent },
+        { path: "blogs/:id", component: AdminBlogDetailsComponent }
     ] }
 ];
 

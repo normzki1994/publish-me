@@ -1,0 +1,62 @@
+.blog-section {
+    padding: 1rem;
+    margin: 0 1rem;
+    max-width: 1400px;
+}
+
+.blog {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.image-container {
+    margin-bottom: 0.5rem;
+}
+
+.blog-image {
+    width: 100%;
+}
+
+.blog-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.blog-date {
+    display: block;
+    color: gray;
+    font-size: 0.75rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.blog-description {
+    line-height: 1.5rem;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+
+.edit-button,
+.delete-button {
+    display: block;
+    margin: 0 0.25rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+}
+
+.edit-button {
+    background-color: #DB605C;
+}
+
+.delete-button {
+    background-color: #8F312E;
+}

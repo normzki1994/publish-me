@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, Input } from "@angular/core";
 import { Router } from "@angular/router";
+import { Blog } from "./blog.model";
 
 @Injectable({ providedIn: "root" })
 export class BlogService {

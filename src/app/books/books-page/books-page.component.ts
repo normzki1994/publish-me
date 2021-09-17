@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faShoppingCart, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import { Book } from '../book.model';
+import { BookService } from '../book.service';
 
 @Component({
   selector: 'app-books-page',
@@ -11,25 +12,57 @@ import { Book } from '../book.model';
 export class BooksPageComponent implements OnInit {
   faShoppingCart = faShoppingCart;
   faSearch = faSearch;
-  
-  books: Book[] = [
-    { title: "Cindrella", author: "Jenny Amy", price: 20, genre: "Children's Story", bookCover: "book-cover.jpg" },
-    { title: "Frozen: Let It Go", author: "Jenny Amy", price: 20, genre: "Children's Story", bookCover: "book-cover-2.jpg" },
-    { title: "Basic Algebra", author: "John Play", price: 20, genre: "Education", bookCover: "book-cover-3.jpg" },
-    { title: "Biology and Chemistry", author: "Mark Sunder", price: 20, genre: "Education", bookCover: "book-cover-4.jpg" },
-    { title: "Programming Fundamentals", author: "Jenny Amy", price: 20, genre: "Education", bookCover: "book-cover.jpg" },
-    { title: "Spaghetti Recipe", author: "Jenny Amy", price: 20, genre: "Cooking", bookCover: "book-cover-2.jpg" },
-    { title: "Caligraphy", author: "John Play", price: 20, genre: "Art", bookCover: "book-cover-3.jpg" },
-    { title: "Titanic", author: "Mark Sunder", price: 20, genre: "Romance", bookCover: "book-cover-4.jpg" },
-    { title: "Accounting", author: "Jenny Amy", price: 20, genre: "Business", bookCover: "book-cover.jpg" }
-    // { title: "Finance", author: "Jenny Amy", price: 20, genre: "Business", bookCover: "book-cover-2.jpg" },
-    // { title: "Daily Exercise", author: "John Play", price: 20, genre: "Lifestyle", bookCover: "book-cover-3.jpg" },
-    // { title: "Furniture Making", author: "Mark Sunder", price: 20, genre: "Lifestyle", bookCover: "book-cover-4.jpg" }
-  ]
 
-  constructor() { }
+  currentPage: number = 1;
+  pageSize: number = 6;
+  lastPage: number = 1;
+
+  books: any = [];
+
+  isLoading: boolean = false;
+  modalType: string = "";
+  modalMessage: string = "";
+
+  constructor(private bookService: BookService) { }
 
   ngOnInit(): void {
+    this.loadBooks("");
   }
 
+  onSearch(searchText: string) {
+    this.currentPage = 1;
+    this.loadBooks(searchText);
+  }
+
+  onPrevious(searchText: string) {
+    if(this.currentPage == 1) {
+      return;
+    }
+
+    this.currentPage = this.currentPage - 1;
+    this.loadBooks(searchText);
+  }
+
+  onNext(searchText: string) {
+    if(this.currentPage >= this.lastPage) {
+      return;
+    }
+
+    this.currentPage = this.currentPage + 1;
+    this.loadBooks(searchText);
+  }
+
+  loadBooks(searchText: string) {
+    window.scroll(0, 0);
+    this.isLoading = true;
+    this.bookService.getBooks(this.pageSize, this.currentPage, searchText).subscribe(response => {
+      this.isLoading = false;
+      this.books = response.books;
+      this.lastPage = response.lastPage;
+    }, error => {
+      this.isLoading = false;
+      this.modalType = "Error";
+      this.modalMessage = "Something went wrong";
+    });
+  }
 }

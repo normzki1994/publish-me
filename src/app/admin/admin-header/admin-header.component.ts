@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { faBars, faEllipsisV, faRocket, faUserEdit, faBook, faMoneyCheck, faBookOpen, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faArrowDown, faTimes, faUser, faSortDown, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook, faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 import { AuthService } from 'src/app/auth/auth.service';
 
@@ -11,14 +12,11 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./admin-header.component.css']
 })
 export class AdminHeaderComponent implements OnInit, OnDestroy {
+  faFacebook = faFacebook;
+  faTwitter = faTwitter;
+  faInstagram = faInstagram;
+  faSearch = faSearch;
   faBars = faBars;
-  faEllipsisV = faEllipsisV;
-  faRocket = faRocket;
-  faUserEdit = faUserEdit;
-  faBook = faBook;
-  faMoneyCheck = faMoneyCheck;
-  faBookOpen = faBookOpen;
-  faEnvelope = faEnvelope;
 
   authStatusListenerSubscription: Subscription = new Subscription();
   user: any;

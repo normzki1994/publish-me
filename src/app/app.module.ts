@@ -38,6 +38,7 @@ import { AddBlogComponent } from './blogs/add-blog/add-blog.component';
 import { EditBlogComponent } from './blogs/edit-blog/edit-blog.component';
 import { AdminBlogPageComponent } from './blogs/admin-blog-page/admin-blog-page.component';
 import { AdminBlogDetailsComponent } from './blogs/admin-blog-details/admin-blog-details.component';
+import { BlogDetailPageComponent } from './blogs/blog-detail-page/blog-detail-page.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { AdminBlogDetailsComponent } from './blogs/admin-blog-details/admin-blog
     AddBlogComponent,
     EditBlogComponent,
     AdminBlogPageComponent,
-    AdminBlogDetailsComponent
+    AdminBlogDetailsComponent,
+    BlogDetailPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,26 +1,43 @@
-<div class="blogs">
-    <app-introduction-header title="Blogs"></app-introduction-header>
+<div class="blog-page">
+    <app-introduction-header title="Blog"></app-introduction-header>
 
-    <section class="blog-list">
-        <div class="blog" *ngFor="let blog of blogs">
-            <div class="image-container">
-                <img src="{{'../../assets/images/' + blog.image}}" alt="" class="blog-image">
-            </div>
-            <div class="blog-date">
-                <span class="blog-day">{{blog.date.getDate()}}</span>
-                <span class="blog-month">{{blog.date.toLocaleString('default', { month: 'long' })}}</span>
-                <span class="blog-year">{{blog.date.getFullYear()}}</span>
-            </div>
-            <div class="blog-details">
-                <h2 class="blog-title">{{blog.title}}</h2>
-                <p class="blog-content">{{blog.content}}</p>
+    <app-loading-spinner [isLoading]="isLoading"></app-loading-spinner>
+
+    <section class="blog-section">
+        <app-modal *ngIf="modalType && modalMessage && !isLoading" [modalType]="modalType" [message]="modalMessage"></app-modal>
+        
+        <h2 class="author-title" *ngIf="!blogs || blogs.length == 0">No Author</h2>
+
+        <div class="search-menu">
+            <label for="searchText" class="search-label">Search</label>
+            <input type="text" class="search-text" id="searchText" name="searchText" placeholder="Search" #searchText>
+            <button type="button" class="search-button" (click)="onSearch(searchText.value)">
+                <fa-icon [icon]="faSearch" class="icon"></fa-icon>
+            </button>
+        </div>
+
+        <div class="blog-list" *ngIf="blogs && blogs.length > 0">
+            <div class="blog" *ngFor="let blog of blogs">
+                <div class="image-container">
+                    <img [src]="blog.imagePath" alt="" class="blog-image">
+                </div>
+                <div class="blog-details">
+                    <h2 class="blog-title">{{blog.title}}</h2>
+                    <span class="blog-date">{{blog.date.slice(0,10)}}</span>
+                    <p class="blog-content">{{blog.description}}</p>
+                    <a [routerLink]="['/blogs', blog._id]" class="read-more">Read More</a>
+                </div>
             </div>
         </div>
-    </section>
 
-    <div class="indicator">
-        <button type="button" class="indicator-button active">1</button>
-        <button type="button" class="indicator-button">2</button>
-        <button type="button" class="indicator-button">3</button>
-    </div>
+        <div class="indicators">
+            <button type="button" class="previous-button" [disabled]="currentPage == 1"
+            [ngStyle]="currentPage == 1 ? {'background-color': 'gray'} : {}"
+            (click)="onPrevious(searchText.value)">Prev</button>
+
+            <button type="button" class="next-button" [disabled]="currentPage >= lastPage"
+            [ngStyle]="currentPage >= lastPage ? {'background-color': 'gray'} : {}"
+            (click)="onNext(searchText.value)">Next</button>
+        </div>
+    </section>
 </div>

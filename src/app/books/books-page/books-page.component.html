@@ -1,39 +1,49 @@
-<div class="books">
+<div class="books-page">
     <app-introduction-header title="Books"></app-introduction-header>
-    
-    <div class="genre">
-        <label for="">Select book genre: </label>
-        <select name="" id="" class="genre-dropdown">
-            <option value="all" selected>All</option>
-            <option value="educational">Educational</option>
-            <option value="children-book">Children Book</option>
-            <option value="romance">Romance</option>
-            <option value="art">Art</option>
-            <option value="history">History</option>
-            <option value="cooking">Cooking</option>
-            <option value="cooking">Lifestyle</option>
-        </select>
-    </div>
 
-    <div class="book-list">
-        <div class="book" *ngFor="let book of books">
-            <div class="book-cover-container">
-                <img src="{{'../../assets/images/' + book.bookCover}}" alt="" class="book-cover">
-            </div>
-            <div class="book-details">
-                <p class="book-price">$ {{book.price}}</p>
-                <h2 class="book-title">{{book.title}}</h2>
-                <h3 class="book-author">By {{book.author}}</h3>
-            </div>
-            <div class="menu">
-                <button class="menu-button"><fa-icon [icon]="faShoppingCart" class="icon"></fa-icon></button>
-                <a href="" class="menu-button"><fa-icon [icon]="faSearch" class="icon"></fa-icon></a>
+    <app-loading-spinner [isLoading]="isLoading"></app-loading-spinner>
+
+    <section class="books-section">
+        <app-modal *ngIf="modalType && modalMessage && !isLoading" [modalType]="modalType" [message]="modalMessage"></app-modal>
+
+        <h1 class="title">Book List</h1>
+
+        <div class="search-menu">
+            <label for="searchText" class="search-label">Search</label>
+            <input type="text" class="search-text" id="searchText" name="searchText" placeholder="Search" #searchText>
+            <button type="button" class="search-button" (click)="onSearch(searchText.value)">
+                <fa-icon [icon]="faSearch" class="icon"></fa-icon>
+            </button>
+        </div>
+
+        <h2 class="no-book-title" *ngIf="!books || books.length == 0">No books found</h2>
+
+        <div class="book-list" *ngIf="books && books.length > 0">
+            <div class="book" *ngFor="let book of books">
+                <div class="menu">
+                    <a href="#" class="menu-button"><fa-icon [icon]="faShoppingCart" class="icon"></fa-icon></a>
+                    <a href="#" class="menu-button"><fa-icon [icon]="faSearch" class="icon"></fa-icon></a>
+                </div>
+                <div class="image-container">
+                    <img [src]="book.imagePath" alt="" class="book-image">
+                </div>
+                <div class="book-details">
+                    <span class="book-price">{{book.price}}</span>
+                    <h3 class="book-title">{{book.title}}</h3>
+                    <span class="book-author">By {{book.author.name}}</span>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="indicator">
-        <button type="button" class="indicator-button active">1</button>
-        <button type="button" class="indicator-button">2</button>
-        <button type="button" class="indicator-button">3</button>
-    </div>
+
+        <div class="indicators">
+            <button type="button" class="previous-button" [disabled]="currentPage == 1"
+            [ngStyle]="currentPage == 1 ? {'background-color': 'gray'} : {}"
+            (click)="onPrevious(searchText.value)">Prev</button>
+
+            <button type="button" class="next-button" [disabled]="currentPage >= lastPage"
+            [ngStyle]="currentPage >= lastPage ? {'background-color': 'gray'} : {}"
+            (click)="onNext(searchText.value)">Next</button>
+        </div>
+    </section>
 </div>
+

@@ -1,0 +1,41 @@
+<div class="blog-detail-page">
+    <app-introduction-header title="Blog"></app-introduction-header>
+
+    <app-loading-spinner [isLoading]="isLoading"></app-loading-spinner>
+
+    <div class="blog-section-container">
+        <section class="blog-section">
+            <app-modal *ngIf="modalType && modalMessage && !isLoading" [modalType]="modalType" [message]="modalMessage"></app-modal>
+    
+            <h1 class="title" *ngIf="!blog">No blog found</h1>
+            <div class="blog" *ngIf="blog">
+                <div class="image-container">
+                    <img [src]="blog.imagePath" alt="" class="blog-image">
+                </div>
+                <div class="blog-details">
+                    <h2 class="blog-title">{{blog.title}}</h2>
+                    <span class="blog-date">{{blog.date.slice(0,10)}}</span>
+                    <p class="blog-description">{{blog.description}}</p>
+                </div>
+            </div>
+        </section>
+
+        <aside class="recent-blog-aside">
+            <h1 class="recent-blog-header">Recent Blog</h1>
+            <h2 class="no-recent-blog" *ngIf="!recentBlogs || recentBlogs.length == 0">No recent blog</h2>
+
+            <div class="recent-blog-list" *ngIf="recentBlogs && recentBlogs.length > 0">
+                <div class="recent-blog" *ngFor="let recentBlog of recentBlogs">
+                    <div class="recent-blog-image-container">
+                        <img [src]="recentBlog.imagePath" alt="" class="recent-blog-image">
+                    </div>
+                    <div class="recent-blog-details">
+                        <h2 class="recent-blog-title">{{recentBlog.title}}</h2>
+                        <span class="recent-blog-date">{{recentBlog.date.slice(0, 10)}}</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+    
+</div>

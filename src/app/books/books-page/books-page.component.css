@@ -1,110 +1,127 @@
-.books {
+.books-page {
     max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
-.genre {
-    padding: 3rem 1rem;
-}
-
-.genre-dropdown {
-    padding: 0.25rem;
-}
-
-.book-list {
+.books-section {
     padding: 1rem;
 }
 
-.book {
-    margin-bottom: 1.5rem;
-    position: relative;
-}
-
-.book-cover-container {
-    min-height: 250px;
-    background-color: rgb(204, 204, 204);
-}
-
-.book-cover {
-    width: 100%;
-    height: 100%;
-}
-
-.book-details {
-    padding: 1rem;
-    background-color: rgb(204, 204, 204);
-}
-
-.book:hover .book-details {
-    background-color: #35678F;
-}
-
-.book-price {
-    color: #DB605C;
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.book-title {
+.title {
+    text-align: center;
     font-size: 1.5rem;
     margin-bottom: 1rem;
 }
 
-.book:hover .book-price,
-.book:hover .book-title,
-.book:hover .book-author {
-    color: white;
+.search-menu {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
 }
 
-.book-author {
-    color: gray;
+.search-label {
+    display: block;
+    margin-right: 0.25rem;
+}
+
+.search-text {
+    padding: 0.25rem;
+    margin-right: 0.25rem;
+}
+
+.search-text:focus {
+    outline: none;
+}
+
+.search-button {
+    display: block;
+    padding: 0.5rem;
+    border: none;
+    background-color: #4699DB;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.no-book-title {
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+.book {
+    margin-bottom: 1rem;
+    position: relative;
 }
 
 .menu {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 5%;
+    right: 5%;
 }
 
 .menu-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    margin-bottom: 0.25rem;
+    background-color: #DB605C;
+    color: white;
+    padding: 0.75rem;
     border-radius: 50%;
-    color: gray;
-    background-color: white;
-    border: none;
-    cursor: pointer;
+    margin-bottom: 0.5rem;
 }
 
-.indicator {
+.menu-button .icon {
+    font-size: 1.25rem;
+    font-weight: 100;
+}
+
+.book-image {
+    display: block;
+    width: 100%;
+}
+
+.book-details {
+    padding: 1rem;
+    background-color: rgb(233, 233, 233);
+}
+
+.book-price {
+    display: block;
+    color: #DB605C;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.book-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.book-author {
+    color: rgb(87, 87, 87);
+}
+
+.indicators {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem 0;
 }
 
-.indicator-button {
+.next-button,
+.previous-button {
     display: block;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
+    margin: 0 0.25rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: white;
     border: none;
-    margin-right: 0.25rem;
-    margin-left: 0.25rem;
+    background-color: #35678F;
     cursor: pointer;
 }
 
-.indicator-button.active {
-    color: white;
-    background-color: #35678F;
-}
-
-@media(min-width:768px) {
+@media(min-width: 768px) {
     .book-list {
         display: grid;
         grid-template-columns: 45% 45%;
@@ -118,26 +135,31 @@
         grid-template-columns: 30% 30% 30%;
     }
 
-    .book {
-        display: grid;
-        grid-template-columns: 50% 50%;
-        justify-content: center;
+    .menu {
+        display: none;
     }
 
-    .book:nth-child(odd) .book-cover-container {
-        grid-column-start: 1;
+    .book:hover .menu {
+        display: block;
     }
 
-    .book:nth-child(odd) .book-details {
-        grid-column-start: 2;
+    .menu-button {
+        background-color: white;
+        color: gray;
     }
 
-    .book:nth-child(even) .book-cover-container {
-        grid-column-start: 2;
+    .menu-button:hover {
+        background-color: #DB605C;
+        color: white;
     }
 
-    .book:nth-child(even) .book-details {
-        grid-column-start: 1;
-        grid-row-start: 1;
+    .book:hover .book-details {
+        background-color: #35678F;
+    }
+
+    .book:hover .book-title,
+    .book:hover .book-author,
+    .book:hover .book-price {
+        color: white;
     }
 }

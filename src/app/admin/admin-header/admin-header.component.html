@@ -1,50 +1,36 @@
-<header class="admin-header">
+<header class="header">
+    <div class="header-content">
+        <div class="header-title">
+            <h1 class="title">Publish Me</h1>
+            <p class="description">Book Store App</p>
+        </div>
+        <div class="search">
+            <form class="search-form">
+                <input type="text" name="" id="search" class="search-input" placeholder="Search">
+                <button class="search-button">
+                    <fa-icon [icon]="faSearch"></fa-icon>
+                </button>
+            </form>
+        </div>
+        <div class="social-media-icons">
+            <span class="social-media-icon"><fa-icon [icon]="faFacebook" class="icon"></fa-icon></span>
+            <span class="social-media-icon"><fa-icon [icon]="faTwitter" class="icon"></fa-icon></span>
+            <span class="social-media-icon"><fa-icon [icon]="faInstagram" class="icon"></fa-icon></span>
+        </div>
+    </div>
     <nav class="main-nav">
-        <button type="button" class="nav-collapse-button" (click)="toggleNavCollapse()"><fa-icon [icon]="faBars" class="icon"></fa-icon></button>
-        <div class="nav-collapse">
-            <ul class="link-list" [ngClass]="showNav ? 'show' : ''">
-                <li>
-                    <a routerLink="/admin" class="link" (click)="toggleNavCollapse()">
-                        <span class="link-icon"><fa-icon [icon]="faRocket"></fa-icon></span> Dashboard
-                    </a>
-                </li>
-                <li>
-                    <a routerLink="/admin/authors" class="link" (click)="toggleNavCollapse()">
-                        <span class="link-icon"><fa-icon [icon]="faUserEdit"></fa-icon></span> Authors
-                    </a>
-                </li>
-                <li>
-                    <a routerLink="/admin/books" class="link" (click)="toggleNavCollapse()">
-                        <span class="link-icon"><fa-icon [icon]="faUserEdit"></fa-icon></span> Books
-                    </a>
-                </li>
-                <li>
-                    <a routerLink="/admin/blogs" class="link" (click)="toggleNavCollapse()">
-                        <span class="link-icon"><fa-icon [icon]="faBookOpen"></fa-icon></span> Blogs
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="link" (click)="toggleNavCollapse()">
-                        <span class="link-icon"><fa-icon [icon]="faEnvelope"></fa-icon></span> Messages
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="link" (click)="toggleNavCollapse()">
-                        <span class="link-icon"><fa-icon [icon]="faMoneyCheck"></fa-icon></span> Sales
-                    </a>
+        <button type="button" class="nav-collapse-button" (click)="toggleNavCollapse()"><fa-icon [icon]="faBars" class="icon"></fa-icon> Menu</button>
+        <div class="nav-collapse" [ngClass]="{'show': showNav}">
+            <ul class="nav-links">
+                <li><a routerLink="/admin" class="link">Dashboard</a><hr></li>
+                <li><a routerLink="/admin/authors" class="link" (click)="toggleNavCollapse()">Author</a><hr></li>
+                <li><a routerLink="/admin/books" class="link" (click)="toggleNavCollapse()">Books</a><hr></li>
+                <li><a routerLink="/admin/blogs" class="link" (click)="toggleNavCollapse()">Blogs</a><hr></li>
+                <li *ngIf="user" class="user-details">
+                    <span class="login-user-name" *ngIf="user">{{user.name}}</span>
+                    <button type="button" class="logout-button" (click)="onLogout()">Logout</button>
                 </li>
             </ul>
         </div>
     </nav>
-    <h1 class="title">Publish Me</h1>
-    <div class="user-details">
-        <button type="button" class="user-details-collapse-button" (click)="toggleUserDetails()">
-            <fa-icon [icon]="faEllipsisV" class="icon"></fa-icon>
-        </button>
-        <div class="user-details-collapse" [ngClass]="showUserDetails ? 'show' : ''">
-            <img src="../../../assets/images/author-2.jpg" alt="" class="user-avatar">
-            <h2 class="user-name">{{user.name}}</h2>
-            <button type="button" class="logout-button" (click)="onLogout()">Logout</button>
-        </div>
-    </div>
 </header>

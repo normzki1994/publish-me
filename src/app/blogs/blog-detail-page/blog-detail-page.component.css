@@ -57,6 +57,10 @@
     color: gray;
 }
 
+.recent-blog-list {
+    margin-bottom: 1rem;
+}
+
 .recent-blog {
     display: flex;
     align-items: flex-start;
@@ -74,6 +78,10 @@
     max-width: 90px;
 }
 
+.recent-blog-title-link {
+    text-decoration: none;
+}
+
 .recent-blog-title {
     color: rgb(37, 37, 37);
     font-size: 1.25rem;
@@ -83,6 +91,17 @@
 .recent-blog-date {
     color: gray;
     font-size: 1rem;
+}
+
+.see-all {
+    text-decoration: none;
+    background-color: gray;
+    color: white;
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 5px;
 }
 
 @media(min-width: 992px) {

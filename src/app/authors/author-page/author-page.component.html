@@ -30,7 +30,7 @@
                 <div class="author-details">
                     <h3 class="author-name">{{author.name}}</h3>
                     <p class="author-description">{{author.description}}</p>
-                    <a href="#" class="view-books-button">View Books</a>
+                    <a [routerLink]="['/authors/books', author._id]" class="view-books-button">View Books</a>
                 </div>
             </div>
         </div>

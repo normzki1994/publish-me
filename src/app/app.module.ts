@@ -39,6 +39,7 @@ import { EditBlogComponent } from './blogs/edit-blog/edit-blog.component';
 import { AdminBlogPageComponent } from './blogs/admin-blog-page/admin-blog-page.component';
 import { AdminBlogDetailsComponent } from './blogs/admin-blog-details/admin-blog-details.component';
 import { BlogDetailPageComponent } from './blogs/blog-detail-page/blog-detail-page.component';
+import { AuthorDetailPageComponent } from './authors/author-detail-page/author-detail-page.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { BlogDetailPageComponent } from './blogs/blog-detail-page/blog-detail-pa
     EditBlogComponent,
     AdminBlogPageComponent,
     AdminBlogDetailsComponent,
-    BlogDetailPageComponent
+    BlogDetailPageComponent,
+    AuthorDetailPageComponent
   ],
   imports: [
     BrowserModule,

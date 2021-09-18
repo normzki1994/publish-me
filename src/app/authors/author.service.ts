@@ -80,4 +80,8 @@ export class AuthorService {
     getAllAuthors() {
         return this.http.get<{authors: any, lastPage: number}>("http://localhost:3000/api/authors/all");
     }
+
+    getAuthorBooks(authorId: any) {
+        return this.http.get<{author: any, books: any}>("http://localhost:3000/api/authors/books/"  + authorId);
+    }
 }

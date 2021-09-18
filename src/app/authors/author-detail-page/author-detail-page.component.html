@@ -1,0 +1,29 @@
+<div class="author-page">
+    <app-loading-spinner [isLoading]="isLoading"></app-loading-spinner>
+
+    <section class="author-section">
+        <app-modal *ngIf="modalType && modalMessage && !isLoading" [modalType]="modalType" [message]="modalMessage"></app-modal>
+        
+        <h1 class="title" *ngIf="!author">No Author</h1>
+        <div class="author" *ngIf="author">
+            <div class="author-info">
+                <div class="image-container">
+                    <img [src]="author.imagePath" alt="" class="author-image">
+                </div>
+                <div class="author-details">
+                    <h1 class="author-name">{{author.name}}</h1>
+                    <p class="author-description">{{author.description}}</p>
+                </div>
+            </div>
+            <div class="author-books">
+                <h2 class="author-books-title">Author Books</h2>
+                <h3 class="no-book-title" *ngIf="!authorBooks || authorBooks.length == 0">No book found</h3>
+                <ul class="book-list" *ngIf="authorBooks && authorBooks.length > 0">
+                    <li class="book" *ngFor="let book of authorBooks">
+                        <a [routerLink]="['/books', book._id]" class="link">{{book.title}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>

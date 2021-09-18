@@ -4,6 +4,7 @@ const multer = require("multer");
 const router = express.Router();
 
 const Author = require("../models/author");
+const Book = require("../models/book");
 
 const checkAuth = require("../middleware/check-auth");
 
@@ -127,6 +128,26 @@ router.delete("/:id", checkAuth, (req, res, next) => {
     }).catch(error => {
         return res.status(500).json({ message: "Something went wrong", error: error });
     })
+});
+
+router.get("/books/:id", (req, res, next) => {
+    const authorId = req.params.id;
+
+    Author.findById(authorId).then(author => {
+        Book.find({ author: authorId }).then(books => {
+            return res.status(200).send({ author: author, books: books })
+        }, error => {
+            return res.status(500).json({
+                message: "Something went wrong",
+                error: error
+            });
+        })
+    }, error => {
+        return res.status(500).json({
+            message: "Something went wrong",
+            error: error
+        });
+    });
 });
 
 module.exports = router;

@@ -30,10 +30,13 @@
                         <img [src]="recentBlog.imagePath" alt="" class="recent-blog-image">
                     </div>
                     <div class="recent-blog-details">
-                        <h2 class="recent-blog-title">{{recentBlog.title}}</h2>
+                        <a [routerLink]="['/blogs', recentBlog._id]" class="recent-blog-title-link">
+                            <h2 class="recent-blog-title">{{recentBlog.title}}</h2>
+                        </a>
                         <span class="recent-blog-date">{{recentBlog.date.slice(0, 10)}}</span>
                     </div>
                 </div>
+                <a routerLink="/blogs" class="see-all">See all</a>
             </div>
         </aside>
     </div>

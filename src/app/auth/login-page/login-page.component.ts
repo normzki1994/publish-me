@@ -41,8 +41,10 @@ export class LoginPageComponent implements OnInit {
       const fetchedUser: any = {
         email: responseData.email,
         name: responseData.name,
-        userId: responseData.userId
+        userId: responseData.userId,
+        isAdmin: responseData.isAdmin
       }
+      this.authService.loggedinUser = fetchedUser;
       this.authService.authStatusListener.next(fetchedUser);
       localStorage.setItem("userData", JSON.stringify(responseData));
       this.authService.autoLogout(responseData.expiresIn * 1000);

@@ -1,0 +1,20 @@
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { BookService } from '../book.service';
+
+@Component({
+  selector: 'app-book-detail-page',
+  templateUrl: './book-detail-page.component.html',
+  styleUrls: ['./book-detail-page.component.css']
+})
+export class BookDetailPageComponent implements OnInit {
+  book: any = null;
+
+  constructor(private route: ActivatedRoute, private bookService: BookService) { }
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((param : ParamMap) => {
+      var bookId = param.get("id");
+    })
+  }
+}

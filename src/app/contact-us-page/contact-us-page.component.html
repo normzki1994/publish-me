@@ -1,7 +1,11 @@
 <div class="contact-us">
+    <app-loading-spinner [isLoading]="isLoading"></app-loading-spinner>
+
     <app-introduction-header title="Contact Us"></app-introduction-header>
 
     <section class="contact-details">
+        <app-modal *ngIf="modalType && modalMessage && !isLoading" [modalType]="modalType" [message]="modalMessage"></app-modal>
+        
         <div class="contact-item">
             <span class="contact-icon"><fa-icon [icon]="faMap" class="icon"></fa-icon></span>
             <p class="contact-item-description"><span>Address: </span>Malolos Bulacan</p>
@@ -21,24 +25,43 @@
     </section>
 
     <section class="contact-message">
-        <form action="" class="contact-form">
+        <form class="contact-form" [formGroup]="messageForm" (ngSubmit)="onSubmit()">
             <h2 class="contact-us-title">Contact Us</h2>
 
             <div class="form-control-group">
                 <label for="" class="form-label">Full Name</label>
-                <input class="form-control" type="text" name="name" id="" placeholder="Name">
+                <input class="form-control" type="text" name="name" id="" placeholder="Name" formControlName="name">
+                <div class="error-list" *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+                    <span class="error-message" *ngIf="name?.errors?.required">Name is required</span>
+                    <span class="error-message" *ngIf="name?.errors?.maxlength">Name max length is 150</span>
+                    <span class="error-message" *ngIf="name?.errors?.minlength">Name min length is 2</span>
+                </div>
             </div>
             <div class="form-control-group">
                 <label for="" class="form-label">Email Address</label>
-                <input class="form-control" type="email" name="email" id="" placeholder="Email">
+                <input class="form-control" type="email" name="email" id="" placeholder="Email" formControlName="email">
+                <div class="error-list" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+                    <span class="error-message" *ngIf="email?.errors?.required">Email is required</span>
+                    <span class="error-message" *ngIf="email?.errors?.email">Not a valid email</span>
+                </div>
             </div>
             <div class="form-control-group">
                 <label for="" class="form-label">Subject</label>
-                <input class="form-control" type="text" name="subject" id="" placeholder="Subject">
+                <input class="form-control" type="text" name="subject" id="" placeholder="Subject" formControlName="subject">
+                <div class="error-list" *ngIf="subject?.invalid && (subject?.dirty || subject?.touched)">
+                    <span class="error-message" *ngIf="subject?.errors?.required">Name is required</span>
+                    <span class="error-message" *ngIf="subject?.errors?.maxlength">Name max length is 150</span>
+                    <span class="error-message" *ngIf="subject?.errors?.minlength">Name min length is 2</span>
+                </div>
             </div>
             <div class="form-control-group">
                 <label for="" class="form-label">Message</label>
-                <textarea class="form-control" name="message" id="" placeholder="Message"></textarea>
+                <textarea class="form-control" name="message" id="" placeholder="Message" formControlName="message"></textarea>
+                <div class="error-list" *ngIf="message?.invalid && (message?.dirty || message?.touched)">
+                    <span class="error-message" *ngIf="message?.errors?.required">Message is required</span>
+                    <span class="error-message" *ngIf="message?.errors?.maxlength">Message max length is 500</span>
+                    <span class="error-message" *ngIf="message?.errors?.minlength">Message min length is 10</span>
+                </div>
             </div>
 
             <input type="submit" value="Send Message" class="submit-button">

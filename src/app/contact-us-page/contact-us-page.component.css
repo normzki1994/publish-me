@@ -83,6 +83,10 @@ textarea.form-control {
     height: 4rem;
 }
 
+.error-message {
+    color: #DB605C;
+}
+
 .submit-button {
     display: block;
     text-decoration: none;

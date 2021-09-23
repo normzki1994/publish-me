@@ -22,4 +22,32 @@ router.post("", (req, res, next) => {
     })
 });
 
+router.get("", checkAuth, async (req, res, next) => {
+    if(!req.userData.isAdmin) {
+        return res.status(401).json({ message: "Not admin. User not authorized" });
+    }
+    
+    let pageSize = req.query.pageSize ? +req.query.pageSize : 1;
+    let currentPage = req.query.currentPage ? +req.query.currentPage : 1;
+    let searchText = req.query.searchText;
+    let searchParam = { subject: { $regex: searchText, $options: "i" } };
+    let lastPage = 1;
+
+    var messageCount = await Message.find(searchParam).count().exec();
+    lastPage = Math.ceil(messageCount / pageSize)
+
+    await Message.find(searchParam)
+        .skip(pageSize * (currentPage - 1))
+        .limit(pageSize)
+        .sort({ date: -1 })
+        .then(messages => {
+            return res.status(200).send({ messages: messages, lastPage: lastPage });
+        }).catch(error => {
+            return res.status(500).json({
+                message: "Something went wrong",
+                error: error
+            });
+        });
+});
+
 module.exports = router;

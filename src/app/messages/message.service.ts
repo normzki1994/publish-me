@@ -19,4 +19,21 @@ export class MessageService {
 
         return this.http.post("http://localhost:3000/api/messages/", messageData);
     }
+
+    getMessages(pageSize: any, currentPage: any, searchText: string) {
+        let token;
+        const userData = localStorage.getItem("userData");
+        if(userData) {
+            token = JSON.parse(userData)?.token;
+        }
+
+        return this.http.get<{messages: any, lastPage: number}>("http://localhost:3000/api/messages/", {
+            params: {
+                pageSize: pageSize,
+                currentPage: currentPage,
+                searchText: searchText,
+                token: token
+            }
+        });
+    }
 }

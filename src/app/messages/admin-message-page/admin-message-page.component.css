@@ -1,0 +1,117 @@
+.message-section {
+    padding: 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: rgb(204, 204, 204);
+}
+
+.title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.no-message-title {
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+.search-menu {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.search-label {
+    display: block;
+    margin-right: 0.25rem;
+}
+
+.search-text {
+    padding: 0.25rem;
+    margin-right: 0.25rem;
+}
+
+.search-text:focus {
+    outline: none;
+}
+
+.search-button {
+    display: block;
+    padding: 0.5rem;
+    border: none;
+    background-color: #4699DB;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.table-container {
+    overflow-x: scroll;
+    padding: 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+}
+
+.message-table tr {
+    border-bottom: 1px solid rgb(100, 80, 80);
+}
+
+.message-table th,
+.message-table td {
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.message-table {
+    background-color: white;
+    min-width: 600px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.message-table .menu {
+    display: flex;
+    align-items: center;
+}
+
+.view-button,
+.delete-button {
+    display: block;
+    margin: 0 0.25rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+}
+
+.view-button {
+    background-color: #4699DB;
+}
+
+.delete-button {
+    background-color: #8F312E;
+}
+
+.indicators {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.next-button,
+.previous-button {
+    display: block;
+    margin: 0 0.25rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: white;
+    border: none;
+    background-color: #35678F;
+    cursor: pointer;
+}

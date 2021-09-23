@@ -1,1 +1,46 @@
-<p>admin-message-page works!</p>
+<section class="message-section">
+    <app-loading-spinner [isLoading]="isLoading"></app-loading-spinner>
+
+    <app-modal *ngIf="modalType && modalMessage && !isLoading" [modalType]="modalType" [message]="modalMessage"></app-modal>
+
+    <h1 class="title">List of Messages</h1>
+    <h2 class="no-message-title" *ngIf="!messages || messages.length == 0">No message</h2>
+
+    <div class="search-menu">
+        <label for="searchText" class="search-label">Search</label>
+        <input type="text" class="search-text" id="searchText" name="searchText" placeholder="Search" #searchText>
+        <button type="button" class="search-button" (click)="onSearch(searchText.value)">
+            <fa-icon [icon]="faSearch" class="icon"></fa-icon>
+        </button>
+    </div>
+
+    <div class="table-container">
+        <table class="message-table" *ngIf="messages && messages.length > 0">
+            <tr>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Subject</th>
+                <th>Menu</th>
+            </tr>
+            <tr *ngFor="let message of messages">
+                <td>{{message.date}}</td>
+                <td>{{message.name}}</td>
+                <td>{{message.subject}}</td>
+                <td class="menu">
+                    <a href="#" class="view-button">View</a>
+                    <button class="delete-button">Delete</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="indicators">
+        <button type="button" class="previous-button" [disabled]="currentPage == 1"
+        [ngStyle]="currentPage == 1 ? {'background-color': 'gray'} : {}"
+        (click)="onPrevious(searchText.value)">Prev</button>
+
+        <button type="button" class="next-button" [disabled]="currentPage >= lastPage"
+        [ngStyle]="currentPage >= lastPage ? {'background-color': 'gray'} : {}"
+        (click)="onNext(searchText.value)">Next</button>
+    </div>
+</section>

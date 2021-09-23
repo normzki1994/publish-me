@@ -26,6 +26,8 @@
                 <li><a routerLink="/admin/authors" class="link" (click)="toggleNavCollapse()">Author</a><hr></li>
                 <li><a routerLink="/admin/books" class="link" (click)="toggleNavCollapse()">Books</a><hr></li>
                 <li><a routerLink="/admin/blogs" class="link" (click)="toggleNavCollapse()">Blogs</a><hr></li>
+                <li><a routerLink="/admin/messages" class="link" (click)="toggleNavCollapse()">Messages</a><hr></li>
+                <li><a routerLink="/" class="link" (click)="toggleNavCollapse()">Main Page</a><hr></li>
                 <li *ngIf="user" class="user-details">
                     <span class="login-user-name" *ngIf="user">{{user.name}}</span>
                     <button type="button" class="logout-button" (click)="onLogout()">Logout</button>

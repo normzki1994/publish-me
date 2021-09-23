@@ -28,6 +28,7 @@ import { EditBlogComponent } from "./blogs/edit-blog/edit-blog.component";
 import { AdminBlogDetailsComponent } from "./blogs/admin-blog-details/admin-blog-details.component";
 import { BlogDetailPageComponent } from "./blogs/blog-detail-page/blog-detail-page.component";
 import { AuthorDetailPageComponent } from "./authors/author-detail-page/author-detail-page.component";
+import { AdminMessagePageComponent } from "./messages/admin-message-page/admin-message-page.component";
 
 const routes: Routes = [
     { path: "", component: MainPageComponent , children: [
@@ -55,7 +56,8 @@ const routes: Routes = [
         { path: "add-blog", component: AddBlogComponent },
         { path: "blogs", component: AdminBlogPageComponent },
         { path: "edit-blog/:id", component: EditBlogComponent },
-        { path: "blogs/:id", component: AdminBlogDetailsComponent }
+        { path: "blogs/:id", component: AdminBlogDetailsComponent },
+        { path: "messages", component: AdminMessagePageComponent }
     ] }
 ];
 

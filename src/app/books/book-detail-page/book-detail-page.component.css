@@ -1,0 +1,51 @@
+.book-section {
+    padding: 3rem 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.no-book-title {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.book {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.image-container {
+    margin-bottom: 0.5rem;
+}
+
+.book-image {
+    display: block;
+    width: 100%;
+}
+
+.book-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.book-author {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.date-published {
+    display: block;
+    font-size: 0.75rem;
+    font-style: italic;
+    color: gray;
+    margin-bottom: 1rem;
+}
+
+@media(min-width: 768px) {
+    .book {
+        display: grid;
+        grid-template-columns: 45% 45%;
+        column-gap: 2rem;
+        justify-content: center;
+    }
+}

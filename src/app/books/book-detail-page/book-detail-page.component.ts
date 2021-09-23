@@ -10,11 +10,26 @@ import { BookService } from '../book.service';
 export class BookDetailPageComponent implements OnInit {
   book: any = null;
 
+  isLoading: boolean = false;
+  modalType: string | null = null;
+  modalMessage: string | null = null;
+
   constructor(private route: ActivatedRoute, private bookService: BookService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param : ParamMap) => {
       var bookId = param.get("id");
+
+      this.isLoading = true;
+      this.bookService.getBook(bookId).subscribe(book => {
+        this.isLoading = false;
+        this.book = book;
+      }, error => {
+        this.isLoading = false;
+        this.isLoading = false;
+        this.modalType = "Error";
+        this.modalMessage = "Something went wrong";
+      })
     })
   }
 }

@@ -22,7 +22,7 @@
             <div class="book" *ngFor="let book of books">
                 <div class="menu">
                     <a href="#" class="menu-button"><fa-icon [icon]="faShoppingCart" class="icon"></fa-icon></a>
-                    <a href="#" class="menu-button"><fa-icon [icon]="faSearch" class="icon"></fa-icon></a>
+                    <a [routerLink]="['/books', book._id]" class="menu-button"><fa-icon [icon]="faSearch" class="icon"></fa-icon></a>
                 </div>
                 <div class="image-container">
                     <img [src]="book.imagePath" alt="" class="book-image">

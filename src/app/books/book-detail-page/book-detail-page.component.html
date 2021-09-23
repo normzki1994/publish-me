@@ -1,1 +1,20 @@
-<div class="book-page"></div>
+<section class="book-section">
+    <app-loading-spinner [isLoading]="isLoading"></app-loading-spinner>
+
+    <app-modal *ngIf="modalType && modalMessage && !isLoading" [modalType]="modalType" [message]="modalMessage"></app-modal>
+
+    <h1 class="no-book-title" *ngIf="!book">No book</h1>
+
+    <div class="book" *ngIf="book">
+        <div class="image-container">
+            <img [src]="book.imagePath" alt="" class="book-image">
+        </div>
+        <div class="book-details">
+            <h2 class="book-title">{{book.title}}</h2>
+            <h3 class="book-author">Author: <a [routerLink]="['/books', book.author._id]">{{book.author.name}}</a></h3>
+            <span class="date-published">Date Published: {{book.datePublished}}</span>
+            <p class="book-price">Price: {{book.price}}</p>
+            <p class="book-genre">Genre: {{book.genre}}</p>
+        </div>
+    </div>
+</section>

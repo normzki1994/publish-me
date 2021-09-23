@@ -80,7 +80,7 @@ router.get("", async (req, res, next) => {
 router.get("/:id", (req, res, next) => {
     const bookId = req.params.id;
 
-    Book.findById(bookId).then(book => {
+    Book.findById(bookId).populate("author").then(book => {
         return res.status(200).send(book);
     }, error => {
         return res.status(500).json({

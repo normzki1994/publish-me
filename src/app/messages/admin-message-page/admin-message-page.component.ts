@@ -59,7 +59,21 @@ export class AdminMessagePageComponent implements OnInit {
       this.lastPage = response.lastPage;
     }, error => {
       this.isLoading = false;
+      console.log(error);
       window.scroll(0, 0);
+      this.modalType = "Error";
+      this.modalMessage = "Something went wrong";
+    })
+  }
+
+  onDelete(messageId: any) {
+    this.messageService.deleteMessage(messageId).subscribe(response => {
+      this.isLoading = false;
+      this.modalType = "Info";
+      this.modalMessage = "Message deleted";
+      this.loadMessages("");
+    }, error => {
+      this.isLoading = false;
       this.modalType = "Error";
       this.modalMessage = "Something went wrong";
     })

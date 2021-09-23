@@ -42,6 +42,7 @@ import { BlogDetailPageComponent } from './blogs/blog-detail-page/blog-detail-pa
 import { AuthorDetailPageComponent } from './authors/author-detail-page/author-detail-page.component';
 import { AdminMessagePageComponent } from './messages/admin-message-page/admin-message-page.component';
 import { AdminMessageDetailPageComponent } from './messages/admin-message-detail-page/admin-message-detail-page.component';
+import { BookDetailPageComponent } from './books/book-detail-page/book-detail-page.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { AdminMessageDetailPageComponent } from './messages/admin-message-detail
     BlogDetailPageComponent,
     AuthorDetailPageComponent,
     AdminMessagePageComponent,
-    AdminMessageDetailPageComponent
+    AdminMessageDetailPageComponent,
+    BookDetailPageComponent
   ],
   imports: [
     BrowserModule,

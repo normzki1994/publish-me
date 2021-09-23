@@ -30,12 +30,14 @@ import { BlogDetailPageComponent } from "./blogs/blog-detail-page/blog-detail-pa
 import { AuthorDetailPageComponent } from "./authors/author-detail-page/author-detail-page.component";
 import { AdminMessagePageComponent } from "./messages/admin-message-page/admin-message-page.component";
 import { AdminMessageDetailPageComponent } from "./messages/admin-message-detail-page/admin-message-detail-page.component";
+import { BookDetailPageComponent } from "./books/book-detail-page/book-detail-page.component";
 
 const routes: Routes = [
     { path: "", component: MainPageComponent , children: [
         { path: "", component: HomePageComponent },
         { path: "about", component: AboutPageComponent },
         { path: "books", component: BooksPageComponent },
+        { path: "books/:id", component: BookDetailPageComponent },
         { path: "authors", component: AuthorPageComponent },
         { path: "authors/books/:id", component: AuthorDetailPageComponent },
         { path: "blogs", component: BlogPageComponent },

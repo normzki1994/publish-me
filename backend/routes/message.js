@@ -50,4 +50,14 @@ router.get("", checkAuth, async (req, res, next) => {
         });
 });
 
+router.get("/:id", (req, res, next) => {
+    var messageId = req.params.id;
+
+    Message.findById(messageId).then(message => {
+        return res.status(200).send(message);
+    }).catch(error => {
+        return res.status(500).json({ message: "Something wen wrong", error: error });
+    });
+});
+
 module.exports = router;

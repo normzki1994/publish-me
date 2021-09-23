@@ -36,4 +36,18 @@ export class MessageService {
             }
         });
     }
+
+    getMessage(messageId: any) {
+        let token;
+        const userData = localStorage.getItem("userData");
+        if(userData) {
+            token = JSON.parse(userData)?.token;
+        }
+
+        return this.http.get("http://localhost:3000/api/messages/" + messageId, {
+            params: {
+                token: token
+            }
+        });
+    }
 }

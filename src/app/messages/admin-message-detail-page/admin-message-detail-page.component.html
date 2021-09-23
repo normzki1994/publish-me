@@ -1,0 +1,20 @@
+<section class="message-section">
+    <app-loading-spinner [isLoading]="isLoading"></app-loading-spinner>
+
+    <app-modal *ngIf="modalType && modalMessage && !isLoading" [modalType]="modalType" [message]="modalMessage"></app-modal>
+
+    <h1 class="no-message-title" *ngIf="!message">No Message</h1>
+
+    <div class="message" *ngIf="message">
+        <h2 class="message-name">From: {{message.name}}</h2>
+        <h3 class="message-email">Email: {{message.email}}</h3>
+        <h3 class="message-subject">Subject: {{message.subject}}</h3>
+        <span class="message-date">Date: {{message.date}}</span>
+        <p class="message-content">{{message.message}}</p>
+    </div>
+
+    <div class="menu">
+        <a routerLink="/admin/messages" class="messages-button">Messages</a>
+        <button class="delete-button">Delete</button>
+    </div>
+</section>

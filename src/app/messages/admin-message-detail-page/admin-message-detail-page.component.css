@@ -1,0 +1,73 @@
+.message-section {
+    padding: 3rem 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: rgb(231, 230, 230);
+}
+
+.no-message-title {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.message {
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 2px 2px 2px gray;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+}
+
+.message-name {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.message-email {
+    margin-bottom: 0.5rem;
+    color: gray;
+}
+
+.message-subject {
+    margin-bottom: 0.25rem;
+}
+
+.message-date {
+    color: gray;
+    font-size: 0.75rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.message-content {
+    line-height: 1.5rem;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.messages-button,
+.delete-button {
+    display: block;
+    margin: 0 0.25rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+}
+
+.messages-button {
+    background-color: #4699DB ;
+}
+
+.delete-button {
+    background-color: #DB605C ;
+}

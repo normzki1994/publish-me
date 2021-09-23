@@ -27,7 +27,7 @@
                 <td>{{message.name}}</td>
                 <td>{{message.subject}}</td>
                 <td class="menu">
-                    <a href="#" class="view-button">View</a>
+                    <a [routerLink]="['/admin/messages', message._id]" class="view-button">View</a>
                     <button class="delete-button">Delete</button>
                 </td>
             </tr>

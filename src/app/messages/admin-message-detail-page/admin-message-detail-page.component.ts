@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { MessageService } from '../message.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class AdminMessageDetailPageComponent implements OnInit {
   modalType: string | null = null;
   modalMessage: string | null = null;
 
-  constructor(private messageService: MessageService, private route: ActivatedRoute) { }
+  constructor(private messageService: MessageService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param: ParamMap) => {
@@ -32,4 +32,14 @@ export class AdminMessageDetailPageComponent implements OnInit {
     })
   }
 
+  onDelete(messageId: any) {
+    this.messageService.deleteMessage(messageId).subscribe(response => {
+      this.isLoading = false;
+      this.router.navigate(["/admin/messages"]);
+    }, error => {
+      this.isLoading = false;
+      this.modalType = "Error";
+      this.modalMessage = "Something went wrong";
+    })
+  }
 }

@@ -15,6 +15,6 @@
 
     <div class="menu">
         <a routerLink="/admin/messages" class="messages-button">Messages</a>
-        <button class="delete-button">Delete</button>
+        <button type="button" class="delete-button" (click)="onDelete(message._id)">Delete</button>
     </div>
 </section>

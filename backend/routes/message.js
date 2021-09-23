@@ -60,4 +60,18 @@ router.get("/:id", (req, res, next) => {
     });
 });
 
+router.delete("/:id", checkAuth, (req, res, next) => {
+    if(!req.userData.isAdmin) {
+        return res.status(401).json({ message: "Not admin. User not authorized" });
+    }
+    
+    const messageId = req.params.id;
+
+    Message.deleteOne({ _id: messageId }).then(result => {
+        return res.status(200).send(result);
+    }).catch(error => {
+        return res.status(500).json({ message: "Something went wrong", error: error });
+    })
+});
+
 module.exports = router;

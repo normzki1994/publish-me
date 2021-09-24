@@ -18,6 +18,38 @@
                     <p class="blog-description">{{blog.description}}</p>
                 </div>
             </div>
+
+            <div class="comment">
+                <h2 class="no-comment-title" *ngIf="!blog?.comments || blog?.comments.length == 0">No Comments</h2>
+                <h2 class="no-comment-title" *ngIf="blog?.comments && blog?.comments.length > 0">{{blog?.comments.length}} Comments</h2>
+
+                <div class="write-comment">
+                    <a routerLink="/login" *ngIf="!user">Login to write a comment</a>
+                    <form class="comment-form" *ngIf="user" [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+                        <img [src]="user.imagePath" alt="" class="user-avatar">
+                        <div class="form-control-group">
+                            <textarea class="form-control" name="content" id="description" placeholder="Write a comment..."
+                            formControlName="content" (input)="onTextChanged(comment)" #comment></textarea>
+                            <div class="error-list" *ngIf="content?.invalid && (content?.dirty || content?.touched)">
+                                <span class="error-message" *ngIf="content?.errors?.required">Comment is required</span>
+                                <span class="error-message" *ngIf="content?.errors?.maxlength">Comment max length is 400</span>
+                            </div>
+                        </div>
+                        <input type="submit" class="submit-button" value="Send"/>
+                    </form>
+                </div>
+
+                <div class="comment-list" *ngIf="blog?.comments && blog?.comments.length > 0">
+                    <div class="comment-item" *ngFor="let comment of blog?.comments">
+                        <img [src]="comment.user.imagePath" alt="" class="user-avatar">
+                        <div class="comment-details">
+                            <h3 class="user-name">{{comment.user.name}}</h3>
+                            <span class="comment-date">{{comment.date}}</span>
+                            <p class="comment-content">{{comment.content}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <aside class="recent-blog-aside">

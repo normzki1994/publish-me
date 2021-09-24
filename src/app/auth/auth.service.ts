@@ -17,8 +17,14 @@ export class AuthService {
 
     }
 
-    signup(name: string, email: string, password: string) {
-        return this.http.post("http://localhost:3000/api/users/signup", { name: name, email: email, password: password});
+    signup(name: string, email: string, password: string, image: File) {
+        var userData = new FormData();
+        userData.append("name", name);
+        userData.append("email", email);
+        userData.append("password", password);
+        userData.append("image", image);
+
+        return this.http.post("http://localhost:3000/api/users/signup", userData);
     }
 
     login(email: string, password: string) {
@@ -29,6 +35,7 @@ export class AuthService {
             email: string;
             userId: string;
             isAdmin: boolean;
+            imagePath: string
         }>("http://localhost:3000/api/users/login", { email: email, password: password});
     }
 

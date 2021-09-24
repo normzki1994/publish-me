@@ -132,6 +132,13 @@
     align-items: center;
 }
 
+.user-avatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    margin-right: 0.25rem;
+}
+
 .login-user-name {
     color: #4699DB;
     display: block;

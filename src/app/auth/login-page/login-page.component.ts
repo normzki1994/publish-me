@@ -42,7 +42,8 @@ export class LoginPageComponent implements OnInit {
         email: responseData.email,
         name: responseData.name,
         userId: responseData.userId,
-        isAdmin: responseData.isAdmin
+        isAdmin: responseData.isAdmin,
+        imagePath: responseData.imagePath
       }
       this.authService.loggedinUser = fetchedUser;
       this.authService.authStatusListener.next(fetchedUser);

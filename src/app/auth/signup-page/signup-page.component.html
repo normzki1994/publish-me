@@ -7,6 +7,20 @@
         <h1 class="signup-title">Sign Up</h1>
 
         <form action="" class="signup-form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+            <div class="image">
+                <div class="image-preview-container" *ngIf="imagePreview != '' && imagePreview">
+                    <img [src]="imagePreview" alt="" class="image-preview">
+                </div>
+                <div class="form-control-group">
+                    <label for="image" class="form-label">Image</label>
+                    <input class="form-control" type="file" name="image" id="image" accept="image/*"
+                    (change)="onImagePicked($event)">
+                    <div class="error-list" *ngIf="image?.invalid && (image?.dirty || image?.touched)">
+                        <span class="error-message" *ngIf="image?.errors?.invalidFileType">Invalid file type.</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="form-control-group">
                 <label for="name" class="form-label">Name</label>
                 <input class="form-control" type="text" name="name" id="name" placeholder="Name" formControlName="name"

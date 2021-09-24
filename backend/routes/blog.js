@@ -77,11 +77,19 @@ router.get("", async (req, res, next) => {
 router.get("/:id", (req, res, next) => {
     var blogId = req.params.id;
 
-    Blog.findById(blogId).then(blog => {
-        return res.status(200).send(blog);
-    }).catch(error => {
-        return res.status(500).json({ message: "Something wen wrong", error: error });
-    });
+    Blog.findById(blogId)
+        .populate({
+            path: "comments",
+            populate: {
+                path: "user",
+                select: "name email imagePath",
+                model: "User"
+            }
+        }).then(blog => {
+            return res.status(200).send(blog);
+        }).catch(error => {
+            return res.status(500).json({ message: "Something wen wrong", error: error });
+        });
 });
 
 router.put("/:id", checkAuth, multer({ storage: storage }).single("image"), (req, res, next) => {

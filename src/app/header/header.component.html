@@ -41,6 +41,8 @@
                     <hr>
                 </li>
                 <li *ngIf="user" class="user-details">
+                    <img [src]="user.imagePath" alt="" class="user-avatar" *ngIf="user.imagePath">
+                    <img src="../../assets/images/reader-avatar-2.jpg" alt="" class="user-avatar" *ngIf="!user.imagePath">
                     <span class="login-user-name" *ngIf="user">{{user.name}}</span>
                     <button type="button" class="logout-button" (click)="onLogout()">Logout</button>
                 </li>
